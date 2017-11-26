@@ -1,3 +1,4 @@
+const rucksack = require('rucksack-css')
 const webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const path = require('path')
@@ -33,10 +34,16 @@ module.exports = {
           use: [{
             loader: "css-loader" // translates CSS into CommonJS
           }, {
+            loader: 'postcss-loader' // Run post css actions
+          }, {
             loader: "sass-loader" // compiles Sass to CSS
           }]
         })
-      }
+      },
+      {
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        loader: 'url-loader'
+      },
     ]
   },
   plugins: [
