@@ -1,0 +1,4 @@
+[submodule "src/scss"]
+	path = src/scss
+	url = https://github.com/Camiloruiiz/scss-framework.git
+	branch = master
