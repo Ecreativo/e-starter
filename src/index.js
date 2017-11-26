@@ -10,7 +10,7 @@ import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/js/dist/popover';
 
-import './index.scss'
+import './scss/main.scss'
 
 console.log("hello world!")
 
