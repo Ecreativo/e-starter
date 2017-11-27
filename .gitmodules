@@ -1,4 +1,4 @@
-[submodule "src/scss"]
-	path = src/scss
-	url = https://github.com/Camiloruiiz/scss-framework.git
+[submodule "site.com"]
+	path = site.com
+	url = https://github.com/Ecreativo/e-theme-pug.git
 	branch = master
