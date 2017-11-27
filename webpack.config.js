@@ -14,8 +14,8 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, 'public')
+    filename: 'static/js/[name].js',
+    path: path.resolve(__dirname, 'site.com/src/')
   },
   //devtool: "source-map",
   module: {
