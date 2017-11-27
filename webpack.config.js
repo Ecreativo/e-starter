@@ -7,12 +7,17 @@ const extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    scripts: [
+      './_assets/javascripts/application.js',
+      './_assets/javascripts/bootstrap.js',
+    ],
+  },
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'public')
   },
-  devtool: "source-map",
+  //devtool: "source-map",
   module: {
     rules: [{
         test: /\.js$/,
@@ -44,6 +49,7 @@ module.exports = {
       },
     ]
   },
+  context: path.resolve(__dirname, './site.com/src'),
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
