@@ -12,6 +12,7 @@ module.exports = {
     filename: 'app.js',
     path: path.resolve(__dirname, 'public')
   },
+  devtool: "source-map",
   module: {
     rules: [{
         test: /\.js$/,
@@ -31,11 +32,9 @@ module.exports = {
           fallback: 'style-loader', // inject CSS to page
           //resolve-url-loader may be chained before sass-loader if necessary
           use: [{
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader", options: { sourceMap: true, includeContent: true } // translates CSS into CommonJS
           }, {
-            loader: 'postcss-loader' // Run post css actions
-          }, {
-            loader: "sass-loader" // compiles Sass to CSS
+            loader: "sass-loader", options: { sourceMap: true, includeContent: true } // compiles Sass to CSS
           }]
         })
       },
