@@ -1,6 +1,8 @@
-const webpack = require('webpack')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const path = require('path')
+const webpack = require('webpack')
+
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: "styles.css",
@@ -19,7 +21,12 @@ module.exports = {
   },
   //devtool: "source-map",
   module: {
-    rules: [{
+    rules: [
+      // Include pug-loader to process the pug files
+      {
+        test: /\.pug$/,
+        use: 'pug-loader'
+      }, {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         use: [{
@@ -37,9 +44,11 @@ module.exports = {
           fallback: 'style-loader', // inject CSS to page
           //resolve-url-loader may be chained before sass-loader if necessary
           use: [{
-            loader: "css-loader", options: { sourceMap: true, includeContent: true } // translates CSS into CommonJS
+            loader: "css-loader",
+            options: { sourceMap: true, includeContent: true } // translates CSS into CommonJS
           }, {
-            loader: "sass-loader", options: { sourceMap: true, includeContent: true } // compiles Sass to CSS
+            loader: "sass-loader",
+            options: { sourceMap: true, includeContent: true } // compiles Sass to CSS
           }]
         })
       },
@@ -61,6 +70,11 @@ module.exports = {
       Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
       Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
       Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      filename: '../public_html/index.html',
+      template: './index2.pug'
     }),
     extractSass
   ]
