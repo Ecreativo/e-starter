@@ -1,8 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
+import path from 'path';
+import webpack from 'webpack';
+import process from 'process';
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const extractSass = new ExtractTextPlugin({
   filename: "static/css/main.css",
@@ -10,7 +12,7 @@ const extractSass = new ExtractTextPlugin({
 
 const isProduction = (process.env.NODE_ENV === 'production');
 
-let config = {
+export let config = {
   entry: {
     scripts: [
       './_assets/javascripts/application.js',
