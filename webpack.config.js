@@ -2,15 +2,20 @@ import path from 'path';
 import webpack from 'webpack';
 import process from 'process';
 
-
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
 const extractSass = new ExtractTextPlugin({
   filename: "static/css/main.css",
 });
 
+//to-do  
 const isProduction = (process.env.NODE_ENV === 'production');
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+}
 
 export let config = {
   entry: {
@@ -47,8 +52,8 @@ export let config = {
         test: /\.(scss)$/,
         use: extractSass.extract({
           fallback: 'style-loader', // inject CSS to page
-          //resolve-url-loader may be chained before sass-loader if necessary
           use: [{
+              //$to-to 4
               loader: "css-loader",
               options: { sourceMap: true } // translates CSS into CommonJS
             }, {
@@ -58,6 +63,7 @@ export let config = {
                 sourceMap: true
               }
             },
+            //resolve-url-loader may be chained before sass-loader if necessary
             { loader: 'resolve-url-loader', options: { sourceMap: true } },
             {
               loader: "sass-loader",
@@ -73,8 +79,12 @@ export let config = {
     ]
   },
   context: path.resolve(__dirname, './site/src'),
+  //$to-to 2
   plugins: isProduction ? [
-    new UglifyJSPlugin(),
+    //$to-to 3 
+    new UglifyJSPlugin({
+      sourceMap: true
+    }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -88,8 +98,8 @@ export let config = {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      filename: '../public_html/index.html',
-      template: './index2.pug'
+      template: './index.pug',
+      filename: '../public_html/index.html'
     }),
     extractSass
   ] : [
