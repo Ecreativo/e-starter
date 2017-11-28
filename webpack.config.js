@@ -20,7 +20,7 @@ let config = {
   },
   output: {
     filename: 'static/js/[name].js',
-    path: path.resolve(__dirname, 'site.com/public_html/')
+    path: path.resolve(__dirname, 'site/public_html/')
   },
   devtool: "source-map",
   module: {
@@ -70,7 +70,7 @@ let config = {
       },
     ]
   },
-  context: path.resolve(__dirname, './site.com/src'),
+  context: path.resolve(__dirname, './site/src'),
   plugins: isProduction ? [
     new UglifyJSPlugin(),
     new webpack.ProvidePlugin({

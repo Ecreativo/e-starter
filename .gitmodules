@@ -1,4 +1,4 @@
-[submodule "site.com"]
-	path = site.com
-	url = https://github.com/Ecreativo/e-theme-pug.git
+[submodule "site"]
+	path = site
+	url = https://github.com/Ecreativo/e-theme-pug
 	branch = master
