@@ -4,8 +4,8 @@
   "description": "A modern ES6 Gulp workflow combined with Webpack",
   "main": "index.js",
   "scripts": {
-    "dev": "node -r babel-register ./node_modules/webpack/bin/webpack --watch",
-    "build": "NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack",
+    "webpack": "node -r babel-register ./node_modules/webpack/bin/webpack",
+    "build": "NODE_ENV=production && npm run webpack",
     "watch": "webpack --watch"
   },
   "babel": {
