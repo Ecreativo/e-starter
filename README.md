@@ -21,5 +21,12 @@ This repo includes some references of differents demos:
 - Webpack 3 + Bootstrap 4 beta example by [xdvarpunen](https://github.com/xdvarpunen) here the [Github Repo](https://github.com/xdvarpunen/webpackboot) if the repo don't exist [here my fork](https://github.com/Camiloruiiz/webpackboot).
 
 #### Notes
-- Webpack command line [-p flag](https://webpack.js.org/api/cli/#shortcuts) [-p flag behind the scenes](https://webpack.js.org/guides/production/#cli-alternatives)
+- Webpack command line [-p flag](https://webpack.js.org/api/cli/#shortcuts) and [-p flag behind the scenes](https://webpack.js.org/guides/production/#cli-alternatives)
+
+#### To-do's
+1. [Specify the Environment](https://webpack.js.org/guides/production/#specify-the-environment)
+2. Divide the environment in [Production](https://webpack.js.org/guides/production/#source-mapping) and [Development](https://webpack.js.org/guides/development/)
+3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping)
+4. [Optimize css](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
+
 
