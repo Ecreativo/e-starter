@@ -47,18 +47,21 @@ let config = {
           fallback: 'style-loader', // inject CSS to page
           //resolve-url-loader may be chained before sass-loader if necessary
           use: [{
-            loader: "css-loader",
-            options: { sourceMap: true } // translates CSS into CommonJS
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              config: { path: __dirname},
-              sourceMap: true
+              loader: "css-loader",
+              options: { sourceMap: true } // translates CSS into CommonJS
+            }, {
+              loader: 'postcss-loader',
+              options: {
+                config: { path: __dirname },
+                sourceMap: true
+              }
+            },
+            { loader: 'resolve-url-loader', options: { sourceMap: true } },
+            {
+              loader: "sass-loader",
+              options: { sourceMap: true } // compiles Sass to CSS
             }
-          }, {
-            loader: "sass-loader",
-            options: { sourceMap: true } // compiles Sass to CSS
-          }]
+          ]
         })
       },
       {
