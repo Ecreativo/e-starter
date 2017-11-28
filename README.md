@@ -28,5 +28,13 @@ This repo includes some references of differents demos:
 2. Divide the environment in [Production](https://webpack.js.org/guides/production/#source-mapping) and [Development](https://webpack.js.org/guides/development/)
 3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping)
 4. [Optimize css](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
+5.look into
+	- If it's necessary a complex pipe with gulp [webpack-stream](https://github.com/shama/webpack-stream)
+	- [Fixing our local environment with Browsersync](https://gist.github.com/robinrendle/0bb0b9e55fafa1cc0c64ff4b5776df05)
+	- [browser-sync-config.js](https://gist.github.com/christopher4lis/3358d92395d686375c50f7ebb218f1dc)
+	- [browser-sync-webpack-plugin](https://www.npmjs.com/package/browser-sync-webpack-plugin)
+	- [Tree Shaking Webpack](https://webpack.js.org/guides/tree-shaking/)
+
+
 
 
