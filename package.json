@@ -1,15 +1,19 @@
 {
-  "name": "webpackboot",
+  "name": "E-starter-kit",
   "version": "1.0.0",
-  "description": "",
+  "description": "A modern ES6 Gulp workflow combined with Webpack",
   "main": "index.js",
   "scripts": {
     "build": "webpack -p",
     "watch": "webpack --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "Camilo Ruiz",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Camiloruiiz/e-starter"
+  },
   "browserslist": [
     "> 0.3%",
     "last 2 versions",
