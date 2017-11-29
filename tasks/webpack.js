@@ -78,7 +78,7 @@ export let config = {
       },
     ]
   },
-  context: path.resolve(__dirname, './site/src'),
+  context: path.resolve(__dirname, '../site/src'),
   //$to-to 2
   plugins: isProduction ? [
     //$to-to 3 
@@ -124,6 +124,16 @@ export let config = {
   ]
 }
 
-//module.exports = { config };
+function scripts() {
 
-module.exports = config;
+  return new Promise(resolve => webpack(config, (err, stats) => {
+
+    if (err) console.log('Webpack', err)
+
+    console.log(stats.toString({ /* stats options */ }))
+
+    resolve()
+  }))
+}
+
+module.exports = { config, scripts }

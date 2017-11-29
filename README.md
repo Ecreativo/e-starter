@@ -34,6 +34,7 @@ This repo includes some references of differents demos:
 	- [browser-sync-config.js](https://gist.github.com/christopher4lis/3358d92395d686375c50f7ebb218f1dc)
 	- [browser-sync-webpack-plugin](https://www.npmjs.com/package/browser-sync-webpack-plugin)
 	- [Tree Shaking Webpack](https://webpack.js.org/guides/tree-shaking/)
+	- [hot reload to use whit vue.js](https://stackoverflow.com/questions/24581873/what-exactly-is-hot-module-replacement-in-webpack)
 
 
 
