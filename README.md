@@ -26,7 +26,7 @@ This repo includes some references of differents demos:
 #### To-do's
 1. [Specify the Environment](https://webpack.js.org/guides/production/#specify-the-environment)
 2. Divide the environment in [Production](https://webpack.js.org/guides/production/#source-mapping) and [Development](https://webpack.js.org/guides/development/)
-3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping)
+3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping) and [Webpack Merge](https://www.npmjs.com/package/webpack-merge)
 4. [Optimize css](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
 5.look into
 	- If it's necessary a complex pipe with gulp [webpack-stream](https://github.com/shama/webpack-stream)
