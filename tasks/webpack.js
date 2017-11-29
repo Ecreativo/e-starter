@@ -8,6 +8,7 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
 const extractSass = new ExtractTextPlugin({
   filename: "static/css/main.css",
+  allChunks: true
 });
 
 //to-do  
