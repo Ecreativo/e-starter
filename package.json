@@ -1,12 +1,12 @@
 {
   "name": "E-starter-kit",
   "version": "1.0.0",
-  "description": "A modern ES6 Gulp workflow combined with Webpack",
+  "description": "Be a modern web developer with this ES6 Gulp workflow combined with Webpack",
   "main": "index.js",
   "scripts": {
     "dev": "gulp --require babel-register --gulpfile tasks",
     "webpack": "node -r babel-register ./node_modules/webpack/bin/webpack",
-    "build": "NODE_ENV=production && npm run webpack",
+    "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks",
     "watch": "webpack --watch"
   },
   "babel": {
@@ -22,6 +22,10 @@
   "keywords": [],
   "author": "Camilo Ruiz",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OscarCamiloRuiz/kickstart-chan/issues"
+  },
+  "homepage": "https://github.com/OscarCamiloRuiz/kickstart-chan#readme",
   "browserslist": [
     "> 0.3%",
     "last 2 versions",
