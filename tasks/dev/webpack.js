@@ -28,7 +28,7 @@ export let config = {
   },
   output: {
     filename: 'static/js/[name].js',
-    path: path.resolve(__dirname, 'site/public_html/')
+    path: path.resolve(__dirname, '../../site/public_html/')
   },
   devtool: "source-map",
   module: {
@@ -79,7 +79,7 @@ export let config = {
       },
     ]
   },
-  context: path.resolve(__dirname, '../site/src'),
+  context: path.resolve(__dirname, '../../site/src'),
   //$to-to 2
   plugins: isProduction ? [
     //$to-to 3 
