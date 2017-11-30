@@ -1,0 +1,12 @@
+{
+    "extends": "standard",
+    "env":
+    {
+        "jquery": true
+    },
+    "rules":
+    {
+        "space-before-function-paren": 0,
+        "no-shadow-restricted-names": 0
+    }
+}

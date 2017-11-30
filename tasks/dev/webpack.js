@@ -22,8 +22,7 @@ export let config = {
   entry: {
     scripts: [
       './_assets/javascripts/application.js',
-      './_assets/javascripts/bootstrap.js',
-      'flickity'
+      './_assets/javascripts/bootstrap.js'
     ],
   },
   output: {
@@ -33,10 +32,23 @@ export let config = {
   devtool: "source-map",
   module: {
     rules: [
+      // eslint options
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        include: [path.resolve(__dirname, '../../site/src/_assets/javascripts')],
+        options: {
+          // eslint options (if necessary)
+          fix: true
+        }
+      },
       // Include pug-loader to process the pug files
       {
         test: /\.pug$/,
-        use: 'pug-loader'
+        //use: 'pug-loader'
+        use: ['html-loader', 'pug-html-loader']
       }, {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
@@ -114,7 +126,6 @@ export let config = {
       Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
       Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
       Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
-      Flickity: "flickity"
     }),
     new HtmlWebpackPlugin({
       inject: false,
