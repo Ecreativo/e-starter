@@ -27,7 +27,7 @@ export let config = {
   },
   output: {
     filename: 'static/js/[name].js',
-    path: path.resolve(__dirname, '../../site/public_html/')
+    path: path.resolve(__dirname, '../../site/src/')
   },
   devtool: "source-map",
   module: {
@@ -130,22 +130,9 @@ export let config = {
     new HtmlWebpackPlugin({
       inject: false,
       template: './index.pug',
-      filename: '../public_html/index.html'
     }),
     extractSass
   ]
 }
-
-function scripts() {
-
-  return new Promise(resolve => webpack(config, (err, stats) => {
-
-    if (err) console.log('Webpack', err)
-
-    console.log(stats.toString({ /* stats options */ }))
-
-    resolve()
-  }))
-}
-
-module.exports = { config, scripts }
+module.exports = { config }
+ 
