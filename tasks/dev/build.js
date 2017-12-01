@@ -4,13 +4,12 @@ import { server, reload } from './server.js';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
-
+var config = require('../config')
 /**
  * Delete files in static folder
  */
 const clean = (done) => {
-  const config = require('../config').delete.development
-  del.sync(config.src, { force: true });
+  del.sync(config.delete.development.src, { force: true });
   done();
 };
 
@@ -19,10 +18,9 @@ const clean = (done) => {
  * if not changed
  */
 const copyFonts = (done) => {
-  const config = require('../config').copy.fonts;
-  return gulp.src(config.src, { force: true })
-    .pipe($.newer(config.dest)) // Ignore unchanged files
-    .pipe(gulp.dest(config.dest));
+  return gulp.src(config.copy.fonts.src, { force: true })
+    .pipe($.newer(config.copy.fonts.dest)) // Ignore unchanged files
+    .pipe(gulp.dest(config.copy.fonts.dest));
   done();
 };
 
@@ -31,17 +29,15 @@ const copyFonts = (done) => {
  * if not changed
  */
 const copyImages = (done) => {
-  const config = require('../config').copy.images;
-  return gulp.src(config.src)
-    .pipe($.newer(config.dest)) // Ignore unchanged files
-    .pipe(gulp.dest(config.dest));
+  return gulp.src(config.copy.images.src)
+    .pipe($.newer(config.copy.images.dest)) // Ignore unchanged files
+    .pipe(gulp.dest(config.copy.images.dest));
   done();
 };
 
 const watch = (done) => {
-  const config = require('../config').watch.development;
-  gulp.watch(config.images, gulp.series(copyImages));
-  gulp.watch(config.fonts, gulp.series(copyFonts));
+  gulp.watch(config.watch.development.images, gulp.series(copyImages));
+  gulp.watch(config.watch.development.fonts, gulp.series(copyFonts));
   done();
 };
 
