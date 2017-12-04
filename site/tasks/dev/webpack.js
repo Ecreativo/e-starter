@@ -27,7 +27,7 @@ export let config = {
   },
   output: {
     filename: 'static/js/[name].js',
-    path: path.resolve(__dirname, '../../site/src/')
+    path: path.resolve(__dirname, '../../src/')
   },
   devtool: "source-map",
   module: {
@@ -38,7 +38,7 @@ export let config = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
-        include: [path.resolve(__dirname, '../../site/src/_assets/javascripts')],
+        include: [path.resolve(__dirname, '../../src/_assets/javascripts')],
         options: {
           // eslint options (if necessary)
           fix: true
@@ -91,7 +91,7 @@ export let config = {
       },
     ]
   },
-  context: path.resolve(__dirname, '../../site/src'),
+  context: path.resolve(__dirname, '../../src'),
   //$to-to 2
   plugins: isProduction ? [
     //$to-to 3 

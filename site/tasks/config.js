@@ -1,10 +1,9 @@
-const site = 'site';
-const src = site + '/src';
+const src = 'src';
 const srcAssets = src + '/_assets';
 const developmentAssets = src + '/static';
-const build = site + '/public_html';
+const build = '/public_html';
 const productionAssets = build + '/static';
-const wp = site + '/app/public/wp-content/themes/_s-child';
+const wp = '/app/public/wp-content/themes/_s-child';
 const wpAssets = wp + '/static';
 
 import process from 'process';
