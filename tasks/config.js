@@ -4,6 +4,12 @@ const srcAssets = src + '/_assets';
 const developmentAssets = src + '/static';
 const build = site + '/public_html';
 const productionAssets = build + '/static';
+const wp = site + '/app/public/wp-content/themes/_s-child';
+const wpAssets = wp + '/static';
+
+import process from 'process';
+
+const USER_ENV = process.env.USER_ENV;
 
 module.exports = {
   browsersync: {
@@ -14,6 +20,7 @@ module.exports = {
       middleware: [],
       port: 8080,
       browser: 'google Chrome canary',
+      open: false,
       //reload when files are changing without fire any other task
       //files: [src + '/**']
       plugins: ['bs-fullscreen-message']
@@ -22,9 +29,18 @@ module.exports = {
       server: {
         baseDir: build + '/',
       },
-      browser: 'google Chrome canary',
+      open: false,
       port: 8081
     },
+    wp: {
+      proxy: 'mka.dev/',
+      injectChanges: true,
+      open: false,
+      //tunnel: true,
+      //tunnel: "ppress",
+      port: 8082,
+      files: wpAssets + '/css/main.min.css'
+    }
   },
   delete: {
     development: {
@@ -45,6 +61,12 @@ module.exports = {
     development: {
       images: srcAssets + '/images/**/*',
       fonts: srcAssets + '/fonts/**'
+    },
+    production: {
+      css: srcAssets + '/scss/**/*{scss}'
+    },
+    wp: {
+      css: productionAssets + '/css/**/*{css}'
     }
   },
   copy: {
@@ -81,8 +103,8 @@ module.exports = {
     dest: build
   },
   css: {
-      src: developmentAssets + '/css/*.css',
-      dest: productionAssets + '/css',
+    src: developmentAssets + '/css/*.css',
+    dest: productionAssets + '/css',
   },
   images: {
     production: {
@@ -94,6 +116,21 @@ module.exports = {
         interlaced: true,
         svgoPlugins: [{ removeViewBox: false }]
       }
+    }
+  },
+  html: {
+    src: build + '/**/*.html',
+    dest: build,
+    options: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeRedundantAttributes: true,
+      removeEmptyAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      removeOptionalTags: true
     }
   },
   rename: {
@@ -109,5 +146,74 @@ module.exports = {
         y: '$1.min.css'
       }
     }
+  },
+  revision: {
+    src: {
+      assets: [
+        productionAssets + '/css/*.css',
+        productionAssets + '/js/*.js'
+        //productionAssets + '/images/**/*'
+      ],
+      base: productionAssets
+    },
+    dest: {
+      assets: productionAssets,
+      manifest: {
+        name: 'manifest.json',
+        path: productionAssets
+      }
+    },
+    wp: {
+      src: {
+        assets: [
+          productionAssets + '/css/*.css',
+          //productionAssets + '/js/*.js'
+          //productionAssets + '/images/**/*'
+        ],
+        base: productionAssets + '/css/'
+      },
+      dest: {
+        assets: wpAssets + '/css/',
+        manifest: {
+          name: 'manifest.json',
+          path: wpAssets + '/css/'
+        }
+      }
+    }
+  },
+  collect: {
+    src: [
+      productionAssets + '/rev-manifest.json',
+      build + '/**/*.{html,php}'
+    ],
+    dest: build,
+    wp: {
+      src: [
+        wpAssets + '/css/rev-manifest.json',
+        wp + '/functions.php'
+      ],
+      dest: wp + '/'
+    }
+  },
+  rsync: {
+    src: build + '/**',
+    options: {
+      destination: '~/etheme.camiloruiz.co.uk/public_html',
+      root: build,
+      hostname: 'home683465163.1and1-data.host',
+      username: USER_ENV,
+      incremental: true,
+      progress: true,
+      relative: true,
+      emptyDirectories: true,
+      recursive: true,
+      clean: true,
+      exclude: ['.DS_Store'],
+      include: []
+    }
+  },
+  sitemap: {
+    src: build + '/**/*.html',
+    dest: build
   }
 };
