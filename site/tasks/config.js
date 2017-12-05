@@ -1,9 +1,9 @@
 const src = 'src';
 const srcAssets = src + '/_assets';
 const developmentAssets = src + '/static';
-const build = '/public_html';
+const build = 'public_html';
 const productionAssets = build + '/static';
-const wp = '/app/public/wp-content/themes/_s-child';
+const wp = 'app/public/wp-content/themes/_s-child';
 const wpAssets = wp + '/static';
 
 import process from 'process';
@@ -87,7 +87,7 @@ module.exports = {
       dest: productionAssets + '/js/'
     },
     src: [
-      'node_modules/apache-server-configs/dist/.htaccess',
+      '../node_modules/apache-server-configs/dist/.htaccess',
       //src + '/_includes/**/*.{html,php}',
       src + '/**/*',
       //src + '/.htaccess',
@@ -165,16 +165,15 @@ module.exports = {
       src: {
         assets: [
           productionAssets + '/css/*.css',
-          //productionAssets + '/js/*.js'
+          productionAssets + '/js/*.js'
           //productionAssets + '/images/**/*'
         ],
-        base: productionAssets + '/css/'
+        base: productionAssets
       },
       dest: {
-        assets: wpAssets + '/css/',
+        assets: wpAssets + '/',
         manifest: {
-          name: 'manifest.json',
-          path: wpAssets + '/css/'
+          path: wpAssets + '/'
         }
       }
     }
@@ -187,7 +186,7 @@ module.exports = {
     dest: build,
     wp: {
       src: [
-        wpAssets + '/css/rev-manifest.json',
+        wpAssets + '/rev-manifest.json',
         wp + '/functions.php'
       ],
       dest: wp + '/'

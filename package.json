@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "gulp --require babel-register --gulpfile site/tasks",
-    "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks",
-    "wp": "gulp wp --require babel-register --gulpfile tasks",
-    "deploy": "USER_ENV=u89411856 gulp deploy --require babel-register --gulpfile tasks",
-    "seo": "gulp seo --require babel-register --gulpfile tasks",
+    "build": "NODE_ENV=production gulp build --require babel-register --gulpfile site/tasks",
+    "wp": "gulp wp --require babel-register --gulpfile site/tasks",
+    "deploy": "USER_ENV=u89411856 gulp deploy --require babel-register --gulpfile site/tasks",
+    "seo": "gulp seo --require babel-register --gulpfile site/tasks",
     "webpack": "node -r babel-register ./node_modules/webpack/bin/webpack --config tasks/dev/webpack.js",
     "watch": "webpack && --watch"
   },
