@@ -19,14 +19,15 @@ export function reload(done) {
  */
 bundler.plugin('done', function(stats) {
   if (stats.hasErrors() || stats.hasWarnings()) {
-    return browser.sockets.emit('fullscreen:message', {
-      title: "Webpack Error:",
-      body: stripAnsi(stats.toString("errors-only")),
-      timeout: 100000
-    });
+    var err_message = stripAnsi(stats.toString('errors-only'))
+    var timeout = 100000
+    //gutil.beep();
+    return browserSync.get('development').notify(err_message, timeout);
   }
   browserSync.get('development').reload();
-});
+})
+
+
 
 export function server(done) {
   config.middleware = webpackDevMiddleware(bundler, { stats: "minimal" /*,quiet: true*/ });

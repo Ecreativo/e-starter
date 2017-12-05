@@ -19,10 +19,9 @@ module.exports = {
       middleware: [],
       port: 8080,
       browser: 'google Chrome canary',
-      open: false,
+      open: false
       //reload when files are changing without fire any other task
       //files: [src + '/**']
-      plugins: ['bs-fullscreen-message']
     },
     production: {
       server: {
