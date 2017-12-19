@@ -7,13 +7,13 @@ Autor: Camilo Ruiz
 Last Update: 24 Nov 2017
 
 #### Targets
-1.	Make more fast the process to develop webs.
- 	* Practise to build websites from scrash.
- 	* Get more speed, writing more.
+1.	Speed up the process of making websites.
+ 	* Practise to build websites from scratch.
+ 	* Be faster by writing more.
 2. Have more control and organization with the projects.
-3. Build my own develop flow.
-4. Develop a good taks in gulp integrating wpack
-5. Develop my own started theme.
+3. Build my own development process.
+4. Work up tasks in gulp and integrating with webpack.
+5. Develop my own starter theme.
 
 #### Secundary Targets
 1. Practise git.
