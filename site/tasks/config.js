@@ -1,31 +1,31 @@
-const src = 'src';
-const srcAssets = src + '/_assets';
-const developmentAssets = src + '/static';
-const build = 'public_html';
-const productionAssets = build + '/static';
-const wp = 'app/public/wp-content/themes/_s-child';
-const wpAssets = wp + '/static';
+import process from 'process'
 
-import process from 'process';
+const src = 'src'
+const srcAssets = src + '/_assets'
+const developmentAssets = src + '/static'
+const build = 'public_html'
+const productionAssets = build + '/static'
+const wp = 'app/public/wp-content/themes/_s-child'
+const wpAssets = wp + '/static'
 
-const USER_ENV = process.env.USER_ENV;
+const USER_ENV = process.env.USER_ENV
 
 module.exports = {
   browsersync: {
     development: {
       server: {
-        baseDir: src + '/',
+        baseDir: src + '/'
       },
       middleware: [],
       port: 8080,
       browser: 'google Chrome canary',
       open: false
-      //reload when files are changing without fire any other task
-      //files: [src + '/**']
+      // reload when files are changing without fire any other task
+      // files: [src + '/**']
     },
     production: {
       server: {
-        baseDir: build + '/',
+        baseDir: build + '/'
       },
       open: false,
       port: 8081
@@ -34,8 +34,8 @@ module.exports = {
       proxy: 'mka.dev/',
       injectChanges: true,
       open: false,
-      //tunnel: true,
-      //tunnel: "ppress",
+      // tunnel: true,
+      // tunnel: "ppress",
       port: 8082,
       files: wpAssets + '/css/main.min.css'
     }
@@ -44,8 +44,8 @@ module.exports = {
     development: {
       src: [
         developmentAssets + '/**',
-        '!' + developmentAssets,
-      ],
+        '!' + developmentAssets
+      ]
     },
     production: {
       src: [
@@ -88,9 +88,9 @@ module.exports = {
     },
     src: [
       '../node_modules/apache-server-configs/dist/.htaccess',
-      //src + '/_includes/**/*.{html,php}',
+      // src + '/_includes/**/*.{html,php}',
       src + '/**/*',
-      //src + '/.htaccess',
+      // src + '/.htaccess',
       '!' + src + '/_assets{,/**}',
       '!' + src + '/_bower_components{,/**}',
       '!' + src + '/static/css{,/**}',
@@ -102,7 +102,7 @@ module.exports = {
   },
   css: {
     src: developmentAssets + '/css/*.css',
-    dest: productionAssets + '/css',
+    dest: productionAssets + '/css'
   },
   images: {
     production: {
@@ -150,7 +150,7 @@ module.exports = {
       assets: [
         productionAssets + '/css/*.css',
         productionAssets + '/js/*.js'
-        //productionAssets + '/images/**/*'
+        // productionAssets + '/images/**/*'
       ],
       base: productionAssets
     },
@@ -166,7 +166,7 @@ module.exports = {
         assets: [
           productionAssets + '/css/*.css',
           productionAssets + '/js/*.js'
-          //productionAssets + '/images/**/*'
+          // productionAssets + '/images/**/*'
         ],
         base: productionAssets
       },
@@ -213,4 +213,4 @@ module.exports = {
     src: build + '/**/*.html',
     dest: build
   }
-};
+}

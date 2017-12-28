@@ -1,6 +1,6 @@
-import gulp   from 'gulp'
-import rev    from 'gulp-rev'
-const config = require('../config').revision.wp;
+import gulp from 'gulp'
+import rev from 'gulp-rev'
+const config = require('../config').revision.wp
 
 /**
  * Revision all asset files and
@@ -10,10 +10,10 @@ export function revision() {
   return gulp.src(config.src.assets, { base: config.src.base })
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev({
-    	base: './',
-    	merge: true 
-	}))
+      base: './',
+      merge: true
+    }))
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev.manifest())
-	.pipe(gulp.dest(config.dest.manifest.path));
+    .pipe(gulp.dest(config.dest.manifest.path))
 };
