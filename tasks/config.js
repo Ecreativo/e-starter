@@ -87,7 +87,7 @@ module.exports = {
       dest: productionAssets + '/js/'
     },
     src: [
-      '../node_modules/apache-server-configs/dist/.htaccess',
+      './node_modules/apache-server-configs/dist/.htaccess',
       // src + '/_includes/**/*.{html,php}',
       src + '/**/*',
       // src + '/.htaccess',
