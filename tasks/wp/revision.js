@@ -10,8 +10,8 @@ export function revision() {
   return gulp.src(config.src.assets, { base: config.src.base })
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev({
-      base: './',
-      merge: true
+      base: './'
+      //, merge: true
     }))
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev.manifest())
