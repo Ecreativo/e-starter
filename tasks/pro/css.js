@@ -1,9 +1,7 @@
 import gulp from 'gulp'
 import postcss from 'gulp-postcss'
 import cssnano from 'cssnano'
-import mqpacker from 'css-mqpacker'
 import browser from 'browser-sync'
-//import uncss  from 'gulp-uncss'
 import rename from 'gulp-rename'
 import notify from 'gulp-notify'
 import size from 'gulp-size'
@@ -19,8 +17,7 @@ export function css(done) {
   var from = size()
   var to = size()
   var processors = [
-    cssnano(),
-    //mqpacker() // combine all media querys
+    cssnano()
   ]
   return gulp.src(config.src)
     .pipe(from)
