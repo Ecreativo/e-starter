@@ -1,5 +1,6 @@
 import process from 'process'
 
+// paths
 const src = 'src'
 const srcAssets = src + '/_assets'
 const developmentAssets = src + '/static'
@@ -8,7 +9,20 @@ const productionAssets = build + '/static'
 const wp = 'app/public/wp-content/themes/_s-child'
 const wpAssets = wp + '/static'
 
-const USER_ENV = process.env.USER_ENV
+// user
+const USER = process.env.USER
+
+// site url
+const URL = process.env.URL
+
+// environment
+const ENV = process.env.NODE_ENV
+
+if (ENV === 'production' && URL !== '') {
+  console.log('Deploying to Production!')
+} else {
+  console.log('Deploying to Staging!')
+}
 
 module.exports = {
   browsersync: {
@@ -18,7 +32,6 @@ module.exports = {
       },
       middleware: [],
       port: 8080,
-      browser: 'google Chrome canary',
       open: false
       // reload when files are changing without fire any other task
       // files: [src + '/**']
@@ -195,10 +208,10 @@ module.exports = {
   rsync: {
     src: build + '/**',
     options: {
-      destination: '~/etheme.camiloruiz.co.uk/public_html',
+      destination: URL,
       root: build,
       hostname: 'home683465163.1and1-data.host',
-      username: USER_ENV,
+      username: USER,
       incremental: true,
       progress: true,
       relative: true,
