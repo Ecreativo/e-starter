@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import del from 'del'
 import { css } from './css'
-import { server, reload } from './browser-sync'
+import { server } from './browser-sync'
 import { images } from './img'
 import { scripts } from './scripts'
 import { revision } from './revision'
@@ -40,9 +40,9 @@ function copyJs() {
 }
 
 const watch = (done) => {
-  gulp.watch(config.watch.production.css, gulp.series(scripts, css));
-  done();
-};
+  gulp.watch(config.watch.production.css, gulp.series(scripts, css))
+  done()
+}
 
 gulp.task(
   'build',
@@ -52,7 +52,7 @@ gulp.task(
     gulp.parallel(
       copyFiles,
       images,
-      copyJs,
+      copyJs
     ),
     css,
     rename,

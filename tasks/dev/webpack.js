@@ -1,21 +1,21 @@
-import path from 'path';
-import webpack from 'webpack';
-import process from 'process';
+import path from 'path'
+import webpack from 'webpack'
+import process from 'process'
 
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
 
 const extractSass = new ExtractTextPlugin({
-  filename: "static/css/main.css",
+  filename: 'static/css/main.css',
   allChunks: true
-});
+})
 
-//to-do  
-const isProduction = (process.env.NODE_ENV === 'production');
+// to-do
+const isProduction = (process.env.NODE_ENV === 'production')
 
 if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!');
+  console.log('Looks like we are in development mode!')
 }
 
 export let config = {
@@ -23,21 +23,21 @@ export let config = {
     scripts: [
       './_assets/javascripts/application.js',
       './_assets/javascripts/bootstrap.js'
-    ],
+    ]
   },
   output: {
     filename: 'static/js/[name].js',
     path: path.resolve(__dirname, '../../src/')
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   module: {
     rules: [
       // eslint options
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader',
         include: [path.resolve(__dirname, '../../src/_assets/javascripts')],
         options: {
           // eslint options (if necessary)
@@ -47,7 +47,7 @@ export let config = {
       // Include pug-loader to process the pug files
       {
         test: /\.pug$/,
-        //use: 'pug-loader'
+        // use: 'pug-loader'
         use: ['html-loader', 'pug-html-loader']
       }, {
         test: /\.js$/,
@@ -66,48 +66,47 @@ export let config = {
         use: extractSass.extract({
           fallback: 'style-loader', // inject CSS to page
           use: [{
-              //$to-to 4
-              loader: "css-loader",
-              options: { sourceMap: true } // translates CSS into CommonJS
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                config: { path: __dirname },
-                sourceMap: true
-              }
-            },
-            //resolve-url-loader may be chained before sass-loader if necessary
-            { loader: 'resolve-url-loader', options: { sourceMap: true } },
-            {
-              loader: "sass-loader",
-              options: { sourceMap: true } // compiles Sass to CSS
+            // $to-to 4
+            loader: 'css-loader',
+            options: { sourceMap: true } // translates CSS into CommonJS
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              config: { path: __dirname },
+              sourceMap: true
             }
-          ]
+          },
+          // resolve-url-loader may be chained before sass-loader if necessary
+          { loader: 'resolve-url-loader', options: { sourceMap: true } },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true } // compiles Sass to CSS
+          }]
         })
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         loader: 'url-loader'
-      },
+      }
     ]
   },
   context: path.resolve(__dirname, '../../src'),
-  //$to-to 2
+  // $to-to 2
   plugins: isProduction ? [
-    //$to-to 3 
+    // $to-to 3
     new UglifyJSPlugin({
       sourceMap: true
     }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
+      $: 'jquery',
+      jQuery: 'jquery',
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
       // In case you imported plugins individually, you must also require them here:
-      Util: "exports-loader?Util!bootstrap/js/dist/util",
-      Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
-      Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
-      Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+      Util: 'exports-loader?Util!bootstrap/js/dist/util',
+      Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
+      Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
+      Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -117,22 +116,21 @@ export let config = {
     extractSass
   ] : [
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
+      $: 'jquery',
+      jQuery: 'jquery',
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
       // In case you imported plugins individually, you must also require them here:
-      Util: "exports-loader?Util!bootstrap/js/dist/util",
-      Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
-      Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
-      Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+      Util: 'exports-loader?Util!bootstrap/js/dist/util',
+      Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
+      Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
+      Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './index.pug',
+      template: './index.pug'
     }),
     extractSass
   ]
 }
 module.exports = { config }
- 

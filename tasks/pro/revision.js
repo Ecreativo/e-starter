@@ -1,6 +1,6 @@
 import gulp from 'gulp'
 import rev from 'gulp-rev'
-const config = require('../config').revision;
+const config = require('../config').revision
 
 /**
  * Revision all asset files and
@@ -12,8 +12,8 @@ export function revision() {
     .pipe(rev())
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev.manifest({
-      base: './',
-      merge: true
+      base: './'
+      // ,merge: true
     }))
-    .pipe(gulp.dest(config.dest.manifest.path));
-};
+    .pipe(gulp.dest(config.dest.manifest.path))
+}

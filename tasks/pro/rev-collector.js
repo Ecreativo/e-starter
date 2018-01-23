@@ -1,6 +1,6 @@
 import gulp from 'gulp'
 import collect from 'gulp-rev-collector'
-const config = require('../config').collect;
+const config = require('../config').collect
 
 /**
  * Replace all links to assets in files
@@ -9,5 +9,5 @@ const config = require('../config').collect;
 export function revcollect() {
   return gulp.src(config.src)
     .pipe(collect())
-    .pipe(gulp.dest(config.dest));
-};
+    .pipe(gulp.dest(config.dest))
+}

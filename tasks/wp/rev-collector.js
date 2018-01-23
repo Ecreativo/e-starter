@@ -15,5 +15,5 @@ export function revcollect() {
       'static/js/': 'static/js/'
       } */
     }))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
 };

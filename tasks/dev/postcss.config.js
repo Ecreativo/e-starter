@@ -3,4 +3,4 @@ module.exports = {
     'rucksack-css': {},
     autoprefixer: true
   }
-};
+}

@@ -1,15 +1,15 @@
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
 
-const $ = gulpLoadPlugins();
-const config = require('../config').images.production;
+const $ = gulpLoadPlugins()
+const config = require('../config').images.production
 
 /**
  * Copy and minimize image files
  */
 export function images(done) {
-  var from = $.size();
-  var to = $.size();
+  var from = $.size()
+  var to = $.size()
   return gulp.src(config.src)
     .pipe(from)
     .pipe($.cache($.imagemin(config.options)))
@@ -21,8 +21,8 @@ export function images(done) {
       onLast: true,
       wait: true,
       message: function () {
-        return from.prettySize + ' → ' + to.prettySize;
+        return from.prettySize + ' → ' + to.prettySize
       }
-    }));
-  done();
-};
+    }))
+  done()
+}

@@ -1,5 +1,5 @@
 import gulp from 'gulp'
-import { serve, reload, clear } from './browser-sync'
+import { serve, reload } from './browser-sync'
 import { revision } from './revision'
 import { revcollect } from './rev-collector'
 
@@ -18,7 +18,6 @@ gulp.task(
   )
 )
 
-
 gulp.task(
   'build:wp',
   gulp.series(
@@ -27,4 +26,3 @@ gulp.task(
     watch
   )
 )
-
