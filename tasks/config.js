@@ -18,7 +18,7 @@ const URL = process.env.URL
 // environment
 const ENV = process.env.NODE_ENV
 
-if (ENV === 'production' && URL !== '') {
+if (ENV === 'production' && URL !== '' && USER !== '') {
   console.log('Deploying to Production!')
 } else {
   console.log('Deploying to Staging!')
