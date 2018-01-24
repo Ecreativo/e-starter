@@ -45,7 +45,7 @@
     "safari >= 5"
   ],
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.0.0",
     "flickity": "^2.0.10",
     "jquery": "^3.2.1",
     "popper.js": "^1.13.0"
@@ -61,7 +61,7 @@
     "css-mqpacker": "^6.0.1",
     "del": "^3.0.0",
     "eslint": "^4.12.1",
-    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
@@ -83,8 +83,8 @@
     "gulp-rev-collector": "^1.2.3",
     "gulp-rsync": "0.0.8",
     "gulp-save": "^1.2.1",
-    "gulp-sitemap": "^4.2.0",
-    "gulp-size": "^2.1.0",
+    "gulp-sitemap": "5.0.0",
+    "gulp-size": "3.0.0",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
@@ -104,7 +104,7 @@
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
-    "webpack-dev-middleware": "^1.12.2",
+    "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0"
   }
 }
