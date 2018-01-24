@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "gulp --require babel-register --gulpfile tasks",
     "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks",
-    "push-s": "URL=site.com USER=site.user NODE_ENV=staging gulp deploy --require babel-register --gulpfile tasks",
-    "push-p": "URL=staging.site.com USER=site.user NODE_ENV=production gulp deploy --require babel-register --gulpfile tasks",
+    "push-s": "HOST=sitehost URL=site.com USER=site.user NODE_ENV=staging gulp deploy --require babel-register --gulpfile tasks",
+    "push-p": "HOST=sitehost URL=staging.site.com USER=site.user NODE_ENV=production gulp deploy --require babel-register --gulpfile tasks",
     "wp": "gulp wp --require babel-register --gulpfile tasks",
     "seo": "URL=esquemacreativo.com gulp seo --require babel-register --gulpfile tasks",
     "webpack": "node -r babel-register ./node_modules/webpack/bin/webpack --config tasks/dev/webpack.js",

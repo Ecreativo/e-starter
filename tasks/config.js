@@ -15,6 +15,9 @@ const USER = process.env.USER
 // site url
 const URL = process.env.URL
 
+// site host
+const HOST = process.env.HOST
+
 // environment
 const ENV = process.env.NODE_ENV
 
@@ -210,7 +213,7 @@ module.exports = {
     options: {
       destination: URL,
       root: build,
-      hostname: 'home683465163.1and1-data.host',
+      hostname: HOST,
       username: USER,
       incremental: true,
       progress: true,
