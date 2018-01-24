@@ -21,10 +21,12 @@ const HOST = process.env.HOST
 // environment
 const ENV = process.env.NODE_ENV
 
-if (ENV === 'production' && URL !== '' && USER !== '') {
-  console.log('Deploying to Production!')
-} else {
-  console.log('Deploying to Staging!')
+if (ENV !== undefined && USER !== undefined) {
+  if (ENV === 'production') {
+    console.log('Deploying to Production!')
+  } else {
+    console.log('Deploying to Staging!')
+  }
 }
 
 module.exports = {
