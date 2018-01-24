@@ -1,5 +1,5 @@
 # Project: "E-Starter kit"
-### Webpack 3 + Bootstrap 4 beta 2 example
+### Webpack 3 + Bootstrap 4 example
 This is the repo to start web projects in ECreativo
 
 Creation date: 24 Nov 2016  
