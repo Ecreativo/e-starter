@@ -104,7 +104,6 @@ export let config = {
       Popper: ['popper.js', 'default'],
       // In case you imported plugins individually, you must also require them here:
       Util: 'exports-loader?Util!bootstrap/js/dist/util',
-      Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
       Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
       Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
     }),
@@ -122,7 +121,6 @@ export let config = {
       Popper: ['popper.js', 'default'],
       // In case you imported plugins individually, you must also require them here:
       Util: 'exports-loader?Util!bootstrap/js/dist/util',
-      Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
       Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
       Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
     }),
