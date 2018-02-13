@@ -47,8 +47,10 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "flickity": "^2.0.10",
+    "image-webpack-loader": "^4.1.0",
     "jquery": "^3.2.1",
-    "popper.js": "^1.13.0"
+    "popper.js": "^1.13.0",
+    "svg-url-loader": "^2.3.1"
   },
   "devDependencies": {
     "apache-server-configs": "^2.15.0",

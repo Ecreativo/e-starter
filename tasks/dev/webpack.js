@@ -34,6 +34,7 @@ export let config = {
     rules: [
       // eslint options
       {
+        // This will apply the loader before the other ones
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
@@ -44,7 +45,14 @@ export let config = {
           fix: true
         }
       },
-      // Include pug-loader to process the pug files
+      // compresses images
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'image-webpack-loader',
+        // This will apply the loader before the other ones
+        enforce: 'pre'
+      },
+      // include pug-loader to process the pug files
       {
         test: /\.pug$/,
         // use: 'pug-loader'
@@ -85,8 +93,23 @@ export let config = {
         })
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
-        loader: 'url-loader'
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
+        options: {
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024
+          // Remove the quotes from the url
+          // (they’re unnecessary in most cases)
+          // noquotes: true
+        }
+      },
+      {
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
+        loader: 'url-loader',
+        options: {
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024
+        }
       }
     ]
   },
@@ -112,6 +135,7 @@ export let config = {
       template: './index.pug',
       filename: '../public_html/index.html'
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     extractSass
   ] : [
     new webpack.ProvidePlugin({
