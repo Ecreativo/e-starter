@@ -51,15 +51,9 @@ npm run build
 ___
 
 #### To-do's
-1. [Specify the Environment](https://webpack.js.org/guides/production/#specify-the-environment)
+1. [Optimize css](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
 
-2. Divide the environment in [Production](https://webpack.js.org/guides/production/#source-mapping) and [Development](https://webpack.js.org/guides/development/)
-
-3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping) and [Webpack Merge](https://www.npmjs.com/package/webpack-merge)
-
-4. [Optimize css](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
-
-5. look into
+2. look into
 	- If it's necessary a complex pipe with gulp [webpack-stream](https://github.com/shama/webpack-stream)
 	- [Fixing our local environment with Browsersync](https://gist.github.com/robinrendle/0bb0b9e55fafa1cc0c64ff4b5776df05)
 	- [browser-sync-config.js](https://gist.github.com/christopher4lis/3358d92395d686375c50f7ebb218f1dc)
@@ -67,9 +61,10 @@ ___
 	- [Tree Shaking Webpack](https://webpack.js.org/guides/tree-shaking/)
 	- [hot reload to use whit vue.js](https://stackoverflow.com/questions/24581873/what-exactly-is-hot-module-replacement-in-webpack)
 
-6. Implement [stylelint](http://www.creativenightly.com/2016/02/How-to-lint-your-css-with-stylelint) in postcss.
+3. Implement [stylelint](http://www.creativenightly.com/2016/02/How-to-lint-your-css-with-stylelint) in postcss.
 
-7. Try to use browserSync.stream({match: '**/*.css'}) with webpack.
+4. Try to use browserSync.stream({match: '**/*.css'}) with webpack.
+
 ####  Notes
 - Webpack command line [-p flag](https://webpack.js.org/api/cli/#shortcuts) and [-p flag behind the scenes](https://webpack.js.org/guides/production/#cli-alternatives)
 - gulfile.js = File were we'll write all the config for run gulp.
@@ -78,7 +73,9 @@ ___
 #### Done
 
 1. Eslint implemented through webpack.
-
+2. Environment divided in [Production](https://webpack.js.org/guides/production/#source-mapping) and [Development](https://webpack.js.org/guides/development/)
+3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping) and [Webpack Merge](https://www.npmjs.com/package/webpack-merge)
+4. [Specify the Environment](https://webpack.js.org/guides/production/#specify-the-environment)
 
 ##### DevDependecies
 
