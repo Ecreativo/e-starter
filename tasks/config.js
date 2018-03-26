@@ -18,17 +18,6 @@ const URL = process.env.URL
 // site host
 const HOST = process.env.HOST
 
-// environment
-const ENV = process.env.NODE_ENV
-
-if (ENV !== undefined && USER !== undefined) {
-  if (ENV === 'production') {
-    console.log('Deploying to Production!')
-  } else {
-    console.log('Deploying to Staging!')
-  }
-}
-
 module.exports = {
   browsersync: {
     development: {
@@ -132,21 +121,6 @@ module.exports = {
         interlaced: true,
         svgoPlugins: [{ removeViewBox: false }]
       }
-    }
-  },
-  html: {
-    src: build + '/**/*.html',
-    dest: build,
-    options: {
-      removeComments: true,
-      collapseWhitespace: true,
-      collapseBooleanAttributes: true,
-      removeAttributeQuotes: true,
-      removeRedundantAttributes: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeOptionalTags: true
     }
   },
   rename: {
