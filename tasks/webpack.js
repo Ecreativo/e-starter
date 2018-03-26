@@ -4,21 +4,21 @@ import process from 'process'
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
+
+// to-do
+const isProduction = (process.env.NODE_ENV === 'production')
 
 const extractSass = new ExtractTextPlugin({
   filename: 'static/css/main.css',
   allChunks: true
 })
 
-// to-do
-const isProduction = (process.env.NODE_ENV === 'production')
+console.log(
+  `Running webpack in the ${isProduction ? 'production' : 'development'} mode`,
+)
 
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!')
-}
-
-export let config = {
+module.exports = {
+  context: path.resolve(__dirname, '../src'),
   entry: {
     scripts: [
       './_assets/javascripts/application.js',
@@ -27,9 +27,8 @@ export let config = {
   },
   output: {
     filename: 'static/js/[name].js',
-    path: path.resolve(__dirname, '../../src/')
+    path: path.resolve(__dirname, '../src/')
   },
-  devtool: 'source-map',
   module: {
     rules: [
       // eslint options
@@ -113,13 +112,7 @@ export let config = {
       }
     ]
   },
-  context: path.resolve(__dirname, '../../src'),
-  // $to-to 2
-  plugins: isProduction ? [
-    // $to-to 3
-    new UglifyJSPlugin({
-      sourceMap: true
-    }),
+  plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -131,28 +124,14 @@ export let config = {
       Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
     }),
     new HtmlWebpackPlugin({
+      title: 'Home',
       inject: false,
       template: './index.pug',
-      filename: '../public_html/index.html'
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    extractSass
-  ] : [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default'],
-      // In case you imported plugins individually, you must also require them here:
-      Util: 'exports-loader?Util!bootstrap/js/dist/util',
-      Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
-      Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      template: './index.pug'
+      filename: '../public_html/index.html',
+      // chunks: ['common', 'bootstrap', 'chandaportal', 'main'],
+      // chunksSortMode: 'manual',
+      alwaysWriteToDisk: true
     }),
     extractSass
   ]
 }
-module.exports = { config }

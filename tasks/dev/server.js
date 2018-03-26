@@ -2,7 +2,7 @@ import browserSync from 'browser-sync'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import stripAnsi from 'strip-ansi'
-import { config as webpackConfig } from './webpack'
+import { config as webpackConfig } from './webpack.config.dev'
 
 const browser = browserSync.create('development')
 const config = require('../config').browsersync.development

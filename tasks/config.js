@@ -33,7 +33,7 @@ module.exports = {
   browsersync: {
     development: {
       server: {
-        baseDir: src + '/'
+        baseDir: build + '/'
       },
       middleware: [],
       port: 8080,
