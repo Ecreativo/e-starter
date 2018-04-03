@@ -14,10 +14,6 @@ const extractSass = new ExtractTextPlugin({
 // to-do
 const isProduction = (process.env.NODE_ENV === 'production')
 
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!')
-}
-
 export let config = {
   entry: {
     scripts: [

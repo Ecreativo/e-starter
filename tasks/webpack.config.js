@@ -1,0 +1,76 @@
+/**
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    landing: './src/landing.js',
+  },
+  output: {
+    path: path.resolve(__dirname, 'public', 'build'),
+    filename: isProduction ? '[name].[chunkhash].js' : '[name].js',
+    publicPath: '/build/',
+  },
+  module: {
+    rules: [{
+        test: /\.js$/,
+        loader: 'babel-loader',
+        // Babel options are loaded from .babelrc
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { minimize: true } },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
+        options: {
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
+          // Remove the quotes from the url (they’re unnecessary in our case)
+          noquotes: true,
+        },
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'image-webpack-loader',
+        // This will apply the loader before the other ones
+        enforce: 'pre',
+      },
+    ],
+  },
+  plugins: [
+    // Emit HTML files that serve the app
+    new HtmlWebpackPlugin({
+      template: 'src/templates/landing.html',
+      chunks: ['landing', 'vendor', 'runtime'],
+      filename: path.resolve(__dirname, 'public/index.html'),
+      alwaysWriteToDisk: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/templates/app.html',
+      chunks: ['app', 'vendor', 'runtime'],
+      filename: path.resolve(__dirname, 'public/users/index.html'),
+      alwaysWriteToDisk: true,
+    })
+  ]
+};

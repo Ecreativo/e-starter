@@ -4,6 +4,7 @@
   "description": "Be a modern web developer with this ES6 Gulp workflow combined with Webpack",
   "main": "/tasks/index.js",
   "scripts": {
+    "dev:server": "webpack-dev-server --open --config webpack.config.dev.js",
     "dev": "gulp --require babel-register --gulpfile tasks",
     "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks",
     "push-s": "HOST=sitehost URL=site.com USER=site.user NODE_ENV=staging gulp deploy --require babel-register --gulpfile tasks",
