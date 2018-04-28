@@ -1,5 +1,5 @@
 import webpack from 'webpack'
-import { config } from './webpack.config.pro'
+import { config } from './webpack.config.prod'
 
 export function scripts() {
   return new Promise(resolve => webpack(config, (err, stats) => {

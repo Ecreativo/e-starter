@@ -14,7 +14,7 @@ const extractSass = new ExtractTextPlugin({
 })
 
 console.log(
-  `Running webpack in the ${isProduction ? 'production' : 'development'} mode`,
+  `Running webpack in the ${isProduction ? 'production' : 'development'} mode`
 )
 
 module.exports = {
