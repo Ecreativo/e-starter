@@ -4,7 +4,7 @@ This is the repo to start web projects in ECreativo
 
 Creation date: 24 Nov 2016  
 Autor: Camilo Ruiz  
-Last Update: 24 Nov 2017
+Last Update: 28 April 2018
 
 #### Targets
 1.	Speed up the process of making websites.
@@ -18,7 +18,6 @@ Last Update: 24 Nov 2017
 #### Secundary Targets
 1. Practise git.
 2. Practise vin.
-3. Retake the programing world.
 
 #### Golden Rules:
 
@@ -77,18 +76,12 @@ ___
 3. Add inline source maps in production [Source Mapping](https://webpack.js.org/guides/production/#source-mapping) and [Webpack Merge](https://www.npmjs.com/package/webpack-merge)
 4. [Specify the Environment](https://webpack.js.org/guides/production/#specify-the-environment)
 
-##### DevDependecies
-
-- Require-dir
-	- For more control I will use the package "require-dir", This allows me to split the code for task in diferents folder and have all the config in only one file.
-- Gulp
-- Browser-sync
-
 ##### Tools Used:
 - Gulp
 - Sass
 - Webpack
 - Postcss
+- Browser-sync
 
 ## Credits
 This repo includes some references of differents demos:
