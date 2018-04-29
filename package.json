@@ -1,5 +1,5 @@
 {
-  "name": "E-starter-kit",
+  "name": "e-starter-kit",
   "version": "1.0.0",
   "description": "Be a modern web developer with this ES6 Gulp workflow combined with Webpack",
   "main": "/tasks/index.js",
@@ -27,9 +27,9 @@
   "author": "Camilo Ruiz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/OscarCamiloRuiz/kickstart-chan/issues"
+    "url": "https://github.com/Camiloruiiz/e-starterissues"
   },
-  "homepage": "https://github.com/OscarCamiloRuiz/kickstart-chan#readme",
+  "homepage": "https://github.com/Camiloruiiz/e-starter#readme",
   "browserslist": [
     "> 0.3%",
     "last 2 versions",
@@ -89,6 +89,7 @@
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.1.0",
     "node-sass": "^4.9.0",
+    "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^2.1.4",
     "psi": "^3.0.0",
     "pug": "^2.0.0-rc.4",

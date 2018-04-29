@@ -1,6 +1,7 @@
 module.exports = {
   plugins: {
     'rucksack-css': {},
-    autoprefixer: true
+    'postcss-cssnext': {features: {rem: {html: false}}}
+    // autoprefixer: true
   }
 }
