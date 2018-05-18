@@ -1,12 +1,10 @@
 import gulp from 'gulp'
 import del from 'del'
-import { css } from './css'
 import { server } from './browser-sync'
 import { images } from './img'
 import { scripts } from './scripts'
 import { revision } from './revision'
 import { revcollect } from './rev-collector'
-import { rename } from './rename'
 import gulpLoadPlugins from 'gulp-load-plugins'
 
 const $ = gulpLoadPlugins()
@@ -30,17 +28,9 @@ function copyFiles(done) {
   done()
 }
 
-/**
- * Copy JS files
- */
-function copyJs() {
-  return gulp.src(config.copy.js.src)
-    .pipe($.rename({ suffix: '.min' }))
-    .pipe(gulp.dest(config.copy.js.dest))
-}
 
 const watch = (done) => {
-  gulp.watch(config.watch.production.css, gulp.series(scripts, css))
+  gulp.watch(config.watch.production.css, gulp.series(scripts))
   done()
 }
 
@@ -48,14 +38,11 @@ gulp.task(
   'build',
   gulp.series(
     clean,
-    scripts,
+    images,
     gulp.parallel(
       copyFiles,
-      images,
-      copyJs
+      scripts
     ),
-    css,
-    rename,
     server,
     watch
   )
