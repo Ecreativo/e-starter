@@ -75,12 +75,6 @@ module.exports = {
     }
   },
   copy: {
-    fonts: {
-      src: [
-        srcAssets + '/fonts/**'
-      ],
-      dest: developmentAssets + '/fonts/'
-    },
     images: {
       src: [
         srcAssets + '/images/**'
@@ -99,11 +93,9 @@ module.exports = {
       src + '/**/*',
       // src + '/.htaccess',
       '!' + src + '/_assets{,/**}',
-      '!' + src + '/_bower_components{,/**}',
-      '!' + src + '/static/css{,/**}',
-      '!' + src + '/_includes{,/**}',
-      '!' + src + '/*.{pug}',
-      '!' + src + '/static/js{,/**}'
+      //'!' + src + '/static/css{,/**}',
+      '!' + src + '/*.pug'//,
+      //'!' + src + '/static/js{,/**}'
     ],
     dest: build
   },
@@ -128,7 +120,7 @@ module.exports = {
     dest: build,
     remplace: {
       js: {
-        x: /(js\/(application|scripts|head))\.js/g,
+        x: /(js\/(application|main|head))\.js/g,
         y: '$1.min.js'
       },
       css: {
