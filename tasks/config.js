@@ -21,9 +21,10 @@ const HOST = process.env.HOST
 module.exports = {
   browsersync: {
     development: {
-      server: {
-        baseDir: build + '/'
-      },
+      // server: {
+      //   baseDir: build + '/'
+      // },
+      server: [build + '/', src + '/'],
       middleware: [],
       port: 8080,
       open: false

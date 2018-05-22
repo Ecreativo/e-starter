@@ -9,7 +9,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 const isProduction = (process.env.NODE_ENV === 'production')
 
 const extractSass = new ExtractTextPlugin({
-  filename: 'static/css/main.css',
+  filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css',
   allChunks: true
 })
 
@@ -18,16 +18,17 @@ console.log(
 )
 
 module.exports = {
-  context: path.resolve(__dirname, '../src'),
+  context: path.resolve(__dirname, '../src/'),
   entry: {
-    scripts: [
+    main: [
       './_assets/javascripts/application.js',
       './_assets/javascripts/bootstrap.js'
     ]
   },
   output: {
-    filename: 'static/js/[name].js',
-    path: path.resolve(__dirname, '../src/')
+    filename: isProduction ? 'static/js/[name].min.js' : 'static/js/[name].js',
+    path: path.resolve(__dirname, '../src/'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -38,7 +39,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
-        include: [path.resolve(__dirname, '../../src/_assets/javascripts')],
+        include: [path.resolve(__dirname, '../src/_assets/javascripts')],
         options: {
           // eslint options (if necessary)
           fix: true
@@ -54,17 +55,21 @@ module.exports = {
       // include pug-loader to process the pug files
       {
         test: /\.pug$/,
-        // use: 'pug-loader'
-        use: ['html-loader', 'pug-html-loader']
+        use: 'pug-loader'
       }, {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['es2015', { modules: false }]
-            ]
+            presets: [['env', {
+              'targets': {
+                'browsers': ['last 2 versions', 'ie >= 11']
+              },
+              'modules': false,
+              'useBuiltIns': true
+            }]],
+            plugins: ['syntax-dynamic-import']
           }
         }]
       },
@@ -96,18 +101,34 @@ module.exports = {
         loader: 'svg-url-loader',
         options: {
           // Inline files smaller than 10 kB (10240 bytes)
-          limit: 10 * 1024
+          limit: 10 * 1024,
           // Remove the quotes from the url
           // (they’re unnecessary in most cases)
           // noquotes: true
+          name: 'static/images/[name].[ext]', // Output below ./fonts
+          publicPath: '../../' // Take the directory into account
         }
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 50000,
+          // Todo separate by differents mimetype
+          // mimetype: 'application/font-woff',
+          // Todo try to change the context to make the url like ../fonts instead of ../../static/fonts/
+          name: './static/fonts/[name].[ext]', // Output below ./fonts
+          publicPath: '../../' // Take the directory into account
+        }
+      },
+      {
+        test: /\.(png|jpe?g|gif|ico)$/,
         loader: 'url-loader',
         options: {
           // Inline files smaller than 10 kB (10240 bytes)
-          limit: 10 * 1024
+          limit: 10 * 1024,
+          name: 'static/images/[name].[ext]', // Output below ./fonts
+          publicPath: '../../' // Take the directory into account
         }
       }
     ]
@@ -128,6 +149,7 @@ module.exports = {
       inject: false,
       template: './index.pug',
       filename: '../public_html/index.html',
+      // chunks: ['main'],
       // chunks: ['common', 'bootstrap', 'chandaportal', 'main'],
       // chunksSortMode: 'manual',
       alwaysWriteToDisk: true
