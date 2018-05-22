@@ -7,9 +7,6 @@ import common from '../webpack.js'
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!')
-}
 
 export let config = merge(common, {
   devtool: 'source-map',

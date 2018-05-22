@@ -94,9 +94,7 @@ module.exports = {
       src + '/**/*',
       // src + '/.htaccess',
       '!' + src + '/_assets{,/**}',
-      //'!' + src + '/static/css{,/**}',
-      '!' + src + '/*.pug'//,
-      //'!' + src + '/static/js{,/**}'
+      '!' + src + '/*.pug'
     ],
     dest: build
   },
