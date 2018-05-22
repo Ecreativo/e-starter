@@ -14,6 +14,17 @@ const clean = (done) => {
 }
 
 /**
+ * Copy fonts to static folder
+ * if not changed
+ */
+const copyFonts = (done) => {
+  return gulp.src(config.copy.fonts.src, { force: true })
+    .pipe($.newer(config.copy.fonts.dest)) // Ignore unchanged files
+    .pipe(gulp.dest(config.copy.fonts.dest))
+  done()
+}
+
+/**
  * Copy images to static folder
  * if not changed
  */
@@ -26,6 +37,7 @@ const copyImages = (done) => {
 
 const watch = (done) => {
   gulp.watch(config.watch.development.images, gulp.series(copyImages))
+  gulp.watch(config.watch.development.fonts, gulp.series(copyFonts))
   done()
 }
 
@@ -33,7 +45,7 @@ gulp.task(
   'build:dev',
   gulp.series(
     clean,
-    gulp.parallel(copyImages),
+    gulp.parallel(copyFonts, copyImages),
     server,
     watch
   )

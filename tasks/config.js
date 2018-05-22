@@ -76,6 +76,12 @@ module.exports = {
     }
   },
   copy: {
+    fonts: {
+      src: [
+        srcAssets + '/fonts/**'
+      ],
+      dest: developmentAssets + '/fonts/'
+    },
     images: {
       src: [
         srcAssets + '/images/**'
