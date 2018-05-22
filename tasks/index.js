@@ -7,6 +7,6 @@ export const dev = gulp.series('build:dev')
 export const build = gulp.series('build'/* , 'rev' */)
 export const wp = gulp.series('build:wp')
 export const deploy = gulp.series('rsync', 'ping')
-export const seo = gulp.series('mobile', 'desktop', savePsiReport, 'ping')
+export const seo = gulp.series('mobile', 'desktop', savePsiReport, 'ping', 'sitemap')
 
 export default dev
