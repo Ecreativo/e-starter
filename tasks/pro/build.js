@@ -28,7 +28,6 @@ function copyFiles(done) {
   done()
 }
 
-
 const watch = (done) => {
   gulp.watch(config.watch.production.css, gulp.series(scripts))
   done()
@@ -40,9 +39,9 @@ gulp.task(
     clean,
     images,
     gulp.parallel(
-      copyFiles,
       scripts
     ),
+    copyFiles,
     server,
     watch
   )

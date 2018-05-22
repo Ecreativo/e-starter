@@ -13,8 +13,6 @@ const clean = (done) => {
   done()
 }
 
-
-
 /**
  * Copy images to static folder
  * if not changed

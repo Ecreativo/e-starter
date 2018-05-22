@@ -32,47 +32,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // eslint options
-      {
-        // This will apply the loader before the other ones
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        include: [path.resolve(__dirname, '../src/_assets/javascripts')],
-        options: {
-          // eslint options (if necessary)
-          fix: true
-        }
-      },
-      // compresses images
-      {
-        test: /\.(jpe?g|png|gif|svg)$/,
-        loader: 'image-webpack-loader',
-        // This will apply the loader before the other ones
-        enforce: 'pre'
-      },
-      // include pug-loader to process the pug files
-      {
-        test: /\.pug$/,
-        use: 'pug-loader'
-      }, {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: [['env', {
-              'targets': {
-                'browsers': ['last 2 versions', 'ie >= 11']
-              },
-              'modules': false,
-              'useBuiltIns': true
-            }]],
-            plugins: ['syntax-dynamic-import']
-          }
-        }]
-      },
       {
         test: /\.(scss)$/,
         use: extractSass.extract({
@@ -129,6 +88,45 @@ module.exports = {
           limit: 10 * 1024,
           name: 'static/images/[name].[ext]', // Output below ./fonts
           publicPath: '../../' // Take the directory into account
+        }
+      },
+      // compresses images
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'image-webpack-loader',
+        // This will apply the loader before the other ones
+        enforce: 'pre'
+      },
+      // include pug-loader to process the pug files
+      {
+        test: /\.pug$/,
+        use: 'pug-loader'
+      },
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [['env', {
+              modules: false,
+              useBuiltIns: true
+            }]],
+            plugins: ['syntax-dynamic-import']
+          }
+        }]
+      },
+      // eslint options
+      {
+        // This will apply the loader before the other ones
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        include: [path.resolve(__dirname, '../src/_assets/javascripts')],
+        options: {
+          // eslint options (if necessary)
+          fix: true
         }
       }
     ]

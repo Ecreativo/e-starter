@@ -12,12 +12,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export let config = merge(common, {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   plugins: [
     new UglifyJSPlugin({
       sourceMap: true,
       uglifyOptions: {
-        //  ecma: 8,
+        ecma: 8,
         warnings: false,
         compress: true
       }
