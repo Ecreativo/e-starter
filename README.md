@@ -64,6 +64,15 @@ ___
 
 4. Try to use browserSync.stream({match: '**/*.css'}) with webpack.
 
+5. Phpserver need, a reload feature.
+
+6. Implement vendor chunk. [developers.google](https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching#dependencies)
+
+7. Implement webfotn from svg files [https://github.com/jeerbl/webfonts-loader](https://github.com/jeerbl/webfonts-loader)
+
+8. Implement sprites [https://www.npmjs.com/package/webpack-spritesmith](https://www.npmjs.com/package/webpack-spritesmith)
+
+9. Implement HMR [https://github.com/PascalAOMS/gulp4-webpack/tree/hmr](https://github.com/PascalAOMS/gulp4-webpack/tree/hmr)
 ####  Notes
 - Webpack command line [-p flag](https://webpack.js.org/api/cli/#shortcuts) and [-p flag behind the scenes](https://webpack.js.org/guides/production/#cli-alternatives)
 - gulfile.js = File were we'll write all the config for run gulp.
