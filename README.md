@@ -73,6 +73,7 @@ ___
 8. Implement sprites [https://www.npmjs.com/package/webpack-spritesmith](https://www.npmjs.com/package/webpack-spritesmith)
 
 9. Implement HMR [https://github.com/PascalAOMS/gulp4-webpack/tree/hmr](https://github.com/PascalAOMS/gulp4-webpack/tree/hmr)
+
 ####  Notes
 - Webpack command line [-p flag](https://webpack.js.org/api/cli/#shortcuts) and [-p flag behind the scenes](https://webpack.js.org/guides/production/#cli-alternatives)
 - gulfile.js = File were we'll write all the config for run gulp.
