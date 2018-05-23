@@ -72,7 +72,7 @@ module.exports = {
         test: /\.(ttf|eot|woff|woff2)$/,
         loader: 'url-loader',
         options: {
-          limit: 50000,
+          limit: 10 * 1024,
           // Todo separate by differents mimetype
           // mimetype: 'application/font-woff',
           // Todo try to change the context to make the url like ../fonts instead of ../../static/fonts/

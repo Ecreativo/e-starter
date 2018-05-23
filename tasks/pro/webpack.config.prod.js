@@ -7,7 +7,6 @@ import common from '../webpack.js'
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
-
 export let config = merge(common, {
   devtool: 'source-map',
   plugins: [
