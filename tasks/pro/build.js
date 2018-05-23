@@ -1,6 +1,6 @@
 import gulp from 'gulp'
 import del from 'del'
-import { server } from './browser-sync'
+import { server, reload } from './browser-sync'
 import { images } from './img'
 import { scripts } from './scripts'
 import { revision } from './revision'
@@ -30,6 +30,7 @@ function copyFiles(done) {
 
 const watch = (done) => {
   gulp.watch(config.watch.production.css, gulp.series(scripts))
+  gulp.watch(config.watch.production.php, reload)
   done()
 }
 
@@ -42,8 +43,8 @@ gulp.task(
       scripts
     ),
     copyFiles,
-    server,
-    watch
+    watch,
+    server
   )
 )
 

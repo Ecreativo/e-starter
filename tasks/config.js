@@ -21,9 +21,6 @@ const HOST = process.env.HOST
 module.exports = {
   browsersync: {
     development: {
-      // server: {
-      //   baseDir: build + '/'
-      // },
       server: [build + '/', src + '/'],
       middleware: [],
       port: 8080,
@@ -32,11 +29,12 @@ module.exports = {
       // files: [src + '/**']
     },
     production: {
-      server: {
-        baseDir: build + '/'
-      },
+      // server: {
+      //   baseDir: build + '/'
+      // },
       open: false,
-      port: 8081
+      port: 8081,
+      proxy: '127.0.0.1'
     },
     wp: {
       proxy: 'mka.dev/',
@@ -47,6 +45,13 @@ module.exports = {
       port: 8082,
       files: wpAssets + '/css/main.min.css'
     }
+  },
+  phpserver: {
+    base: build + '/',
+    keepalive: true,
+    hostname: 'localhost',
+    port: 8081,
+    open: false
   },
   delete: {
     development: {
@@ -69,7 +74,8 @@ module.exports = {
       fonts: srcAssets + '/fonts/**'
     },
     production: {
-      css: srcAssets + '/scss/**/*{scss}'
+      css: srcAssets + '/scss/**/*{scss}',
+      php: build + '/**/*.{pug,php}'
     },
     wp: {
       css: productionAssets + '/css/**/*{css}'

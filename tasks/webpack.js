@@ -4,6 +4,7 @@ import process from 'process'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import pugPHPFilter from 'pug-php-filter'
 
 // to-do
 const isProduction = (process.env.NODE_ENV === 'production')
@@ -103,7 +104,14 @@ module.exports = {
       // include pug-loader to process the pug files
       {
         test: /\.pug$/,
-        use: 'pug-loader'
+        use: [{
+          loader: 'pug-loader',
+          options: {
+            filters: {
+              php: pugPHPFilter
+          }
+          }
+        }]
       },
       {
         test: /\.js$/,
