@@ -46,7 +46,7 @@ npm run dev
 ```powershell
 npm run build
 ```
-- Running `webpack` build assets ans place in public_html folder.
+- Running `webpack` build assets and place in public_html folder.
 ___
 
 #### To-do's
