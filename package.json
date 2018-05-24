@@ -51,7 +51,8 @@
     "flickity-imagesloaded": "^2.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.5"
+    "popper.js": "^1.14.5",
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "apache-server-configs": "^3.0.0",
@@ -109,6 +110,9 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
+    "vue-loader": "^15.2.0",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
     "webpack-dashboard": "^2.0.0",
     "webpack-dev-server": "^3.1.10",
     "webpack-hot-middleware": "^2.24.3",

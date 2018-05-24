@@ -39,9 +39,30 @@ let webpackConfig = {
         ]
       },
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+            // the "scss" and "sass" values for the lang attribute to the right configs here.
+            // other preprocessors should work out of the box, no loader config like this necessary.
+            'scss': [
+              'vue-style-loader',
+              'css-loader',
+              'sass-loader'
+            ],
+            'sass': [
+              'vue-style-loader',
+              'css-loader',
+              'sass-loader?indentedSyntax'
+            ]
+          }
+          // other vue-loader options go here
+        }
+      },
+      {
         test: /\.(scss)$/,
-        use: [
-          !isProduction ? 'style-loader' : MiniCssExtractPlugin.loader, {
+        use: [!isProduction ? 'style-loader' : MiniCssExtractPlugin.loader, {
             // $to-to 4
             loader: 'css-loader',
             options: {
@@ -60,7 +81,8 @@ let webpackConfig = {
           {
             loader: 'sass-loader',
             options: { sourceMap: true } // compiles Sass to CSS
-          }]
+          }
+        ]
       },
       // include pug-loader to process the pug files
       {
@@ -77,10 +99,12 @@ let webpackConfig = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [['env', {
-              modules: false,
-              useBuiltIns: true
-            }]],
+            presets: [
+              ['env', {
+                modules: false,
+                useBuiltIns: true
+              }]
+            ],
             plugins: ['syntax-dynamic-import'],
             cacheDirectory: true,
             babelrc: false
