@@ -22,7 +22,9 @@ module.exports = {
   entry: {
     main: [
       './_assets/javascripts/application.js',
-      './_assets/javascripts/bootstrap.js'
+      './_assets/javascripts/bootstrap.js',
+      './_assets/javascripts/analytics.js'
+      
     ]
   },
   output: {
@@ -144,7 +146,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Home',
-      inject: false,
+      inject: true,
       template: './index.pug',
       filename: '../public_html/index.html',
       // chunks: ['main'],
