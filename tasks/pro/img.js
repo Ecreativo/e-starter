@@ -1,7 +1,5 @@
 import gulp from 'gulp'
-import gulpLoadPlugins from 'gulp-load-plugins'
-
-const $ = gulpLoadPlugins()
+const imagemin = require('gulp-imagemin');
 const config = require('../config').images.production
 
 /**
@@ -9,7 +7,18 @@ const config = require('../config').images.production
  */
 export function images(done) {
   return gulp.src(config.src)
-    .pipe($.cache($.imagemin(config.options)))
+    .pipe(imagemin([
+      imagemin.gifsicle({ interlaced: true }),
+      imagemin.jpegtran({ progressive: true }),
+      imagemin.optipng({ optimizationLevel: 5 }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: true },
+          { cleanupIDs: false }
+        ]
+      })
+    ]))
     .pipe(gulp.dest(config.dest))
   done()
 }
+
