@@ -1,6 +1,5 @@
 import path from 'path'
 import webpack from 'webpack'
-import process from 'process'
 
 import merge from 'webpack-merge'
 import common from '../webpack.js'
