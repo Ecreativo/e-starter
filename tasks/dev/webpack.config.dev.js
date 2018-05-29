@@ -4,7 +4,8 @@ import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 
 export let config = merge(common, {
-  devtool: 'eval-source-map',
+  devtool: 'inline-cheap-source-map',
+  // devtool: 'eval',
   plugins: [
     // Show Dashboard
     new DashboardPlugin(),
