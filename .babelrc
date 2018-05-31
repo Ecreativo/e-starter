@@ -1,3 +1,24 @@
 {
-  "presets": ["env"]
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "> 0.3%",
+          "ie >= 10",
+          "ie_mob >= 10",
+          "Edge >= 12",
+          "Explorer >= 10",
+          "ff >= 30",
+          "Chrome >= 45",
+          "Firefox >= 38",
+          "opera >= 30",
+          "iOS >= 9",
+          "android >= 4.4",
+          "bb >= 10",
+          "safari >= 5"]
+      },
+      "forceAllTransforms": true
+    }]
+  ]
 }
