@@ -10,11 +10,14 @@ export let config = merge(common, {
   devtool: 'source-map',
   plugins: [
     new UglifyJSPlugin({
-      sourceMap: true,
+      sourceMap: false,
       uglifyOptions: {
-        ecma: 8,
-        warnings: false,
-        compress: true
+        ecma: 6,
+        mangle: false,
+        warnings: true,
+        compress: false,
+        safari10: true,
+        ie8: true
       }
     }),
     // Make module IDs more stable
