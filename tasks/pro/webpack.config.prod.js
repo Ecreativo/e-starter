@@ -7,7 +7,20 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
 export let config = merge(common, {
+  mode: 'production',
   devtool: 'source-map',
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/, // you may add 'vendor.js' here if you want to
+          name: 'vendor',
+          chunks: 'initial',
+          enforce: true
+        }
+      }
+    }
+  },
   plugins: [
     new UglifyJSPlugin({
       sourceMap: false,
@@ -24,9 +37,6 @@ export let config = merge(common, {
     new webpack.HashedModuleIdsPlugin(),
     // Concatenate modules where possible
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common'
-    }),
     new FaviconsWebpackPlugin({
       // Your source logo
       logo: path.resolve(__dirname, '../../src/_assets/images/brand/logo.png'),
@@ -58,10 +68,11 @@ export let config = merge(common, {
         windows: false
       }
     }),
-    // Replace `process.env.NODE_ENV` with `"production"`
+    // Replace `process.env.NODE_ENV` with `'production'`
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 })
 module.exports = { config }
+
