@@ -106,7 +106,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, '../src'),
         use: [{
           loader: 'babel-loader',
           options: {
@@ -114,7 +114,8 @@ module.exports = {
               modules: false,
               useBuiltIns: true
             }]],
-            plugins: ['syntax-dynamic-import']
+            plugins: ['syntax-dynamic-import'],
+            babelrc: false
           }
         }]
       },
