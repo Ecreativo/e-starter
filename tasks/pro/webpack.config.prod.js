@@ -9,6 +9,7 @@ export let config = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
+    nodeEnv: 'production',
     minimize: true,
     splitChunks: {
       cacheGroups: {
@@ -22,7 +23,7 @@ export let config = merge(common, {
     }
   },
   plugins: [
-    
+
     // Make module IDs more stable
     new webpack.HashedModuleIdsPlugin(),
     // Concatenate modules where possible
@@ -57,10 +58,6 @@ export let config = merge(common, {
         yandex: false,
         windows: false
       }
-    }),
-    // Replace `process.env.NODE_ENV` with `'production'`
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 })
