@@ -5,6 +5,8 @@ import merge from 'webpack-merge'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import VueLoaderPlugin from 'vue-loader/lib/plugin'
+
 
 // to-do
 const isEnv = process.env.NODE_ENV
@@ -40,30 +42,22 @@ let webpackConfig = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-          // other vue-loader options go here
-        }
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          !isProduction
+            ? 'vue-style-loader'
+            : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
       },
       {
         test: /\.(scss)$/,
-        use: [!isProduction ? 'style-loader' : MiniCssExtractPlugin.loader, {
-            // $to-to 4
+        use: [
+          !isProduction ? 'vue-style-loader' : MiniCssExtractPlugin.loader, {
+          // $to-to 4
             loader: 'css-loader',
             options: {
               sourceMap: true,
@@ -80,14 +74,25 @@ let webpackConfig = {
           { loader: 'resolve-url-loader', options: { sourceMap: true } },
           {
             loader: 'sass-loader',
-            options: { sourceMap: true } // compiles Sass to CSS
-          }
-        ]
+            options: {
+              sourceMap: true
+            } // compiles Sass to CSS
+          }]
       },
       // include pug-loader to process the pug files
       {
         test: /\.pug$/,
-        use: 'pug-loader'
+        oneOf: [
+          // this applies to `<template lang="pug">` in Vue components
+          {
+            resourceQuery: /^\?vue/,
+            use: ['pug-plain-loader']
+          },
+          // this applies to pug imports inside JavaScript
+          {
+            use: ['pug-loader']
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -133,6 +138,7 @@ let webpackConfig = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
