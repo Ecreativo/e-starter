@@ -2,16 +2,11 @@ import path from 'path'
 import webpack from 'webpack'
 import process from 'process'
 
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 // to-do
 const isProduction = (process.env.NODE_ENV === 'production')
-
-const extractSass = new ExtractTextPlugin({
-  filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css',
-  allChunks: true
-})
 
 console.log(
   `Running webpack in the ${isProduction ? 'production' : 'development'} mode`
@@ -24,7 +19,6 @@ module.exports = {
       './_assets/javascripts/application.js',
       './_assets/javascripts/bootstrap.js',
       './_assets/javascripts/analytics.js'
-      
     ]
   },
   output: {
@@ -36,12 +30,14 @@ module.exports = {
     rules: [
       {
         test: /\.(scss)$/,
-        use: extractSass.extract({
-          fallback: 'style-loader', // inject CSS to page
-          use: [{
+        use: [
+          !isProduction ? 'style-loader' : MiniCssExtractPlugin.loader, {
             // $to-to 4
             loader: 'css-loader',
-            options: { sourceMap: true } // translates CSS into CommonJS
+            options: {
+              sourceMap: true,
+              importLoaders: 2
+            } // translates CSS into CommonJS
           }, {
             loader: 'postcss-loader',
             options: {
@@ -55,7 +51,6 @@ module.exports = {
             loader: 'sass-loader',
             options: { sourceMap: true } // compiles Sass to CSS
           }]
-        })
       },
       {
         test: /\.svg$/,
@@ -106,7 +101,10 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, '../src'),
+        exclude: file => (
+          /node_modules/.test(file) &&
+          !/\.vue\.js/.test(file)
+        ),
         use: [{
           loader: 'babel-loader',
           options: {
@@ -135,6 +133,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css'
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -150,11 +153,9 @@ module.exports = {
       inject: true,
       template: './index.pug',
       filename: '../public_html/index.html',
-      // chunks: ['main'],
-      // chunks: ['common', 'bootstrap', 'chandaportal', 'main'],
-      // chunksSortMode: 'manual',
+      chunks: ['commons', 'main', 'vendor'],
+      chunksSortMode: 'manual',
       alwaysWriteToDisk: true
-    }),
-    extractSass
+    })
   ]
 }
