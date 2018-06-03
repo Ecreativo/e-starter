@@ -101,6 +101,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        // include: path.resolve(__dirname, '../src'),
         exclude: file => (
           /node_modules/.test(file) &&
           !/\.vue\.js/.test(file)
@@ -136,7 +137,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css'
+      filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css',
+      chunkFilename: !isProduction ? 'static/css/[id].css' : 'static/css/[id].[hash].css'
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -154,7 +156,7 @@ module.exports = {
       template: './index.pug',
       filename: '../public_html/index.html',
       chunks: ['commons', 'main', 'vendor'],
-      chunksSortMode: 'manual',
+
       alwaysWriteToDisk: true
     })
   ]
