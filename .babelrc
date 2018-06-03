@@ -16,9 +16,10 @@
           "iOS >= 9",
           "android >= 4.4",
           "bb >= 10",
-          "safari >= 5"]
+          "safari >= 5"
+        ]
       },
-      "forceAllTransforms": true
+      "useBuiltIns": true
     }]
   ]
 }
