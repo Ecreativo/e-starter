@@ -155,7 +155,7 @@ module.exports = {
       inject: true,
       template: './index.pug',
       filename: '../public_html/index.html',
-      chunks: ['commons', 'main', 'vendor'],
+      chunks: ['main', 'vendor'],
 
       alwaysWriteToDisk: true
     })

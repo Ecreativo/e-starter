@@ -21,8 +21,9 @@ export let config = merge(common, {
         },
         css: {
           test: /\.(css|sass|scss)$/,
-          name: 'commons',
+          name: 'styles',
           chunks: 'all',
+          // enforce: true,
           minChunks: 2
         }
       }
