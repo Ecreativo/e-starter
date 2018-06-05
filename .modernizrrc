@@ -1,0 +1,10 @@
+{
+  "minify": true,
+  "classPrefix": "ti-moder-",
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/css/cssgrid"
+  ]
+}

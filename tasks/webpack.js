@@ -18,7 +18,9 @@ module.exports = {
     main: [
       './_assets/javascripts/application.js',
       './_assets/javascripts/bootstrap.js'
-    ]
+    ],
+    // Modernizer
+    modernizr: 'modernizr'
   },
   output: {
     filename: isProduction ? 'static/js/[name]-[chunkhash:5].min.js' : 'static/js/[name].js',
@@ -33,6 +35,14 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
+      },
+      {
+        test: /\.modernizrrc.js$/,
+        use: [ 'modernizr-loader' ]
+      },
+      {
+        test: /\.modernizrrc(\.json)?$/,
+        use: [ 'modernizr-loader', 'json-loader' ]
       },
       {
         test: /\.(scss)$/,
@@ -139,6 +149,11 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      'modernizr$': path.resolve(__dirname, '../.modernizrrc')
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
