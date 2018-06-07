@@ -113,6 +113,7 @@ module.exports = {
               useBuiltIns: true
             }]],
             plugins: ['syntax-dynamic-import'],
+            cacheDirectory: true,
             babelrc: false
           }
         }]
@@ -155,7 +156,6 @@ module.exports = {
       template: './index.pug',
       filename: '../public_html/index.html',
       chunks: ['main', 'vendor'],
-
       alwaysWriteToDisk: true
     })
   ]
