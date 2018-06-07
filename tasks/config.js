@@ -111,13 +111,7 @@ module.exports = {
   images: {
     production: {
       src: developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,ico,JPG,svg}',
-      dest: productionAssets + '/images/',
-      options: {
-        optimizationLevel: 3,
-        progessive: true,
-        interlaced: true,
-        svgoPlugins: [{ removeViewBox: false }]
-      }
+      dest: productionAssets + '/images/'
     }
   },
   rename: {
@@ -184,7 +178,7 @@ module.exports = {
   rsync: {
     src: build + '/**',
     options: {
-      destination: URL,
+      destination: '~/' + URL,
       root: build,
       hostname: HOST,
       username: USER,
