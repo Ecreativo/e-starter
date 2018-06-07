@@ -3,6 +3,8 @@ import webpack from 'webpack'
 
 import merge from 'webpack-merge'
 import common from '../webpack.js'
+
+import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
 export let config = merge(common, {
@@ -30,7 +32,6 @@ export let config = merge(common, {
     }
   },
   plugins: [
-
     // Make module IDs more stable
     new webpack.HashedModuleIdsPlugin(),
     // Concatenate modules where possible
@@ -65,8 +66,20 @@ export let config = merge(common, {
         yandex: false,
         windows: false
       }
+    }),
+    new HtmlCriticalPlugin({
+      base: path.resolve(__dirname, '../../public_html'),
+      src: 'index.html',
+      dest: 'index.html',
+      inline: true,
+      minify: true,
+      extract: true,
+      width: 1200,
+      height: 400,
+      penthouse: {
+        blockJSRequests: false
+      }
     })
   ]
 })
 module.exports = { config }
-
