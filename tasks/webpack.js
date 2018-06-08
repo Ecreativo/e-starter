@@ -21,8 +21,8 @@ module.exports = {
     ]
   },
   output: {
-    filename: isProduction ? 'static/js/[name].min.js' : 'static/js/[name].js',
-    path: path.resolve(__dirname, '../src/'),
+    filename: isProduction ? 'static/js/[name]-[chunkhash:5].min.js' : 'static/js/[name].js',
+    path: path.resolve(__dirname, '../public_html/'),
     publicPath: '/'
   },
   module: {
@@ -137,8 +137,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css',
-      chunkFilename: !isProduction ? 'static/css/[id].css' : 'static/css/[id].[hash].css'
+      filename: isProduction ? 'static/css/[name]-[contenthash:5].min.css' : 'static/css/[name].css',
+      chunkFilename: isProduction ? 'static/css/[id]-[contenthash:5].min.css' : 'static/css/[id].css'
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
