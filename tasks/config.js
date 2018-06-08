@@ -99,6 +99,7 @@ module.exports = {
       // src + '/_includes/**/*.{html,php}',
       src + '/**/*',
       // src + '/.htaccess',
+      '!' + src + '/static{,/**}',
       '!' + src + '/_assets{,/**}',
       '!' + src + '/*.pug'
     ],
