@@ -28,6 +28,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      },
+      {
         test: /\.(scss)$/,
         use: [
           !isProduction ? 'style-loader' : MiniCssExtractPlugin.loader, {
