@@ -11,7 +11,8 @@
     "wp": "gulp wp --require babel-register --gulpfile tasks",
     "seo": "URL=esquemacreativo.com gulp seo --require babel-register --gulpfile tasks",
     "webpack": "node -r babel-register ./node_modules/webpack/bin/webpack --config tasks/dev/webpack.js",
-    "watch": "webpack && --watch"
+    "watch": "webpack && --watch",
+    "clear": "gulp clear --require babel-register --gulpfile tasks"
   },
   "repository": {
     "type": "git",
