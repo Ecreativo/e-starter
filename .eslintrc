@@ -1,12 +1,19 @@
 {
-    "extends": "standard",
-    "env":
-    {
-        "jquery": true
-    },
-    "rules":
-    {
-        "space-before-function-paren": 0,
-        "no-shadow-restricted-names": 0
-    }
+  "extends": "standard",
+  "env": {
+    "jquery": true
+  },
+  "globals": {
+    "jQuery": true,
+    "matchMedia": true,
+    "Flickity": true,
+    "YT": true,
+    "google": true,
+    "magnificPopup": true,
+    "rangeslider": true
+  },
+  "rules": {
+    "space-before-function-paren": 0,
+    "no-shadow-restricted-names": 0
+  }
 }
