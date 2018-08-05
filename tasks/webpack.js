@@ -160,7 +160,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Home',
       inject: true,
-      template: './index.pug',
+      template: './_assets/pug/pages/index.pug',
       filename: '../public_html/index.html',
       chunks: ['main', 'vendor'],
       alwaysWriteToDisk: true
