@@ -84,7 +84,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpe?g|gif|ico)$/,
+        test: /\.(png|jpe?g|gif|ico|cur)$/,
         loader: 'url-loader',
         options: {
           // Inline files smaller than 10 kB (10240 bytes)
