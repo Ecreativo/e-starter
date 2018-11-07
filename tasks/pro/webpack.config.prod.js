@@ -38,7 +38,7 @@ export let config = merge(common, {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new FaviconsWebpackPlugin({
       // Your source logo
-      logo: path.resolve(__dirname, '../../src/_assets/images/brand/logo.png'),
+      logo: path.resolve(__dirname, '../../src/assets/images/brand/logo.png'),
       // The prefix for all image files (might be a folder or a name)
       prefix: 'static/images/icons/',
       // Emit all stats of the generated icons

@@ -16,8 +16,8 @@ module.exports = {
   context: path.resolve(__dirname, '../src/'),
   entry: {
     main: [
-      './_assets/javascripts/application.js',
-      './_assets/javascripts/bootstrap.js'
+      './assets/javascripts/application.js',
+      './assets/javascripts/bootstrap.js'
     ]
   },
   output: {
@@ -132,7 +132,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
-        include: [path.resolve(__dirname, '../src/_assets/javascripts')],
+        include: [path.resolve(__dirname, '../src/assets/javascripts')],
         options: {
           // eslint options (if necessary)
           fix: true
@@ -160,7 +160,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Home',
       inject: true,
-      template: './_assets/pug/pages/index.pug',
+      template: './views/pages/index.pug',
       filename: '../public_html/index.html',
       chunks: ['main', 'vendor'],
       alwaysWriteToDisk: true

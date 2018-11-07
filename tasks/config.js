@@ -2,7 +2,7 @@ import process from 'process'
 
 // paths
 const src = 'src'
-const srcAssets = src + '/_assets'
+const srcAssets = src + '/assets'
 const developmentAssets = src + '/static'
 const build = 'public_html'
 const productionAssets = build + '/static'
@@ -100,7 +100,7 @@ module.exports = {
       src + '/**/*',
       // src + '/.htaccess',
       '!' + src + '/static{,/**}',
-      '!' + src + '/_assets{,/**}',
+      '!' + src + '/assets{,/**}',
       '!' + src + '/*.pug'
     ],
     dest: build
