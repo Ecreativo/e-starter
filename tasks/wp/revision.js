@@ -6,7 +6,7 @@ const config = require('../config').revision.wp
  * Revision all asset files and
  * write a manifest file
  */
-export function revision() {
+export function revisionWp() {
   return gulp.src(config.src.assets, { base: config.src.base })
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev({

@@ -5,19 +5,12 @@ import gulpLoadPlugins from 'gulp-load-plugins'
 
 const $ = gulpLoadPlugins()
 var config = require('../config')
-/**
- * Delete files in static folder
- */
-const clean = (done) => {
-  del.sync(config.delete.development.src, { force: true })
-  done()
-}
 
 /**
  * Copy fonts to static folder
  * if not changed
  */
-const copyFonts = (done) => {
+const copyFontsDev = (done) => {
   return gulp.src(config.copy.fonts.src, { force: true })
     .pipe($.newer(config.copy.fonts.dest)) // Ignore unchanged files
     .pipe(gulp.dest(config.copy.fonts.dest))
@@ -28,7 +21,7 @@ const copyFonts = (done) => {
  * Copy images to static folder
  * if not changed
  */
-const copyImages = (done) => {
+const copyImagesDev = (done) => {
   return gulp.src(config.copy.images.src)
     .pipe($.newer(config.copy.images.dest)) // Ignore unchanged files
     .pipe(gulp.dest(config.copy.images.dest))
@@ -36,16 +29,26 @@ const copyImages = (done) => {
 }
 
 const watch = (done) => {
-  gulp.watch(config.watch.development.images, gulp.series(copyImages))
-  gulp.watch(config.watch.development.fonts, gulp.series(copyFonts))
+  gulp.watch(config.watch.development.images, gulp.series(copyImagesDev))
+  gulp.watch(config.watch.development.fonts, gulp.series(copyFontsDev))
   done()
 }
+
+/**
+ * Delete files in static folder
+ */
+export const clearDev = () => del(config.delete.development.src, { force: true })
 
 gulp.task(
   'build:dev',
   gulp.series(
-    clean,
-    gulp.parallel(copyFonts, copyImages),
+    gulp.parallel(copyFontsDev, copyImagesDev)
+  )
+)
+
+gulp.task(
+  'server:dev',
+  gulp.series(
     server,
     watch
   )

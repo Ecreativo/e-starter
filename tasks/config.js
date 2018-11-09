@@ -1,12 +1,15 @@
 import process from 'process'
+import path from 'path'
 
 // paths
 const src = 'src'
 const srcAssets = src + '/assets'
 const developmentAssets = src + '/static'
-const build = 'public_html'
+const build = './public_html'
 const productionAssets = build + '/static'
-const wp = 'app/public/wp-content/themes/_s-child'
+const wp = path.resolve(__dirname, '../')
+// const wp = 'app/public/wp-content/themes/e-child-theme'
+const wpInc = wp + '/inc'
 const wpAssets = wp + '/static'
 
 // user
@@ -18,6 +21,9 @@ const URL = process.env.URL
 // site host
 const HOST = process.env.HOST
 
+const isWp = (process.env.WP === 'true')
+let imagesOutputPath = isWp ? wpAssets + '/images/' : productionAssets + '/images/'
+
 module.exports = {
   browsersync: {
     development: {
@@ -26,8 +32,8 @@ module.exports = {
       // },
       server: [build + '/', src + '/'],
       middleware: [],
-      port: 8080,
-      open: false
+      open: false,
+      port: 8080
       // reload when files are changing without fire any other task
       // files: [src + '/**']
     },
@@ -39,7 +45,7 @@ module.exports = {
       port: 8081
     },
     wp: {
-      proxy: 'mka.dev/',
+      proxy: 'site.local/',
       injectChanges: true,
       open: false,
       // tunnel: true,
@@ -50,16 +56,21 @@ module.exports = {
   },
   delete: {
     development: {
-      src: [
-        developmentAssets + '/**',
-        '!' + developmentAssets
-      ]
+      src: developmentAssets
     },
     production: {
       src: [
         productionAssets + '/css/**',
         productionAssets + '/js/**',
         build + '/**/*.{php,html}'
+      ]
+    },
+    clear: {
+      src: [
+        developmentAssets,
+        build,
+        wpAssets,
+        wpInc + '/enqueue.php'
       ]
     }
   },
@@ -69,10 +80,14 @@ module.exports = {
       fonts: srcAssets + '/fonts/**'
     },
     production: {
-      css: srcAssets + '/scss/**/*{scss}'
+      css: srcAssets + '/scss/**/*.scss',
+      js: srcAssets + '/javascripts/**/*',
+      images: srcAssets + '/images{,/**}',
+      fonts: srcAssets + '/fonts{,/**}'
     },
     wp: {
-      css: productionAssets + '/css/**/*{css}'
+      css: productionAssets + '/css/*.css',
+      js: productionAssets + '/js/*.js'
     }
   },
   copy: {
@@ -95,15 +110,32 @@ module.exports = {
       dest: productionAssets + '/js/'
     },
     src: [
-      './node_modules/apache-server-configs/dist/.htaccess',
-      // src + '/_includes/**/*.{html,php}',
-      src + '/**/*',
       // src + '/.htaccess',
-      '!' + src + '/static{,/**}',
-      '!' + src + '/assets{,/**}',
-      '!' + src + '/*.pug'
+      './node_modules/apache-server-configs/dist/.htaccess',
+      // src + '/inc/**/*.{html,php}',
+      src + '/inc/**/*.txt'
+      // src + '/**/*',
+      // '!' + src + '/views',
+      // '!' + src + '/static{,/**}',
+      // '!' + src + '/assets{,/**}'
     ],
-    dest: build
+    dest: build,
+    production: {
+      fonts: {
+        src: [
+          srcAssets + '/fonts/**'
+        ],
+        dest: productionAssets + '/fonts/'
+      }
+    },
+    wp: {
+      fonts: {
+        src: [
+          srcAssets + '/fonts/**'
+        ],
+        dest: wpAssets + '/fonts/'
+      }
+    }
   },
   css: {
     src: developmentAssets + '/css/*.css',
@@ -111,8 +143,8 @@ module.exports = {
   },
   images: {
     production: {
-      src: developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,ico,JPG,svg}',
-      dest: productionAssets + '/images/'
+      src: srcAssets + '/images/**/*.{jpg,jpeg,png,gif,ico,JPG,svg}',
+      dest: imagesOutputPath
     }
   },
   rename: {
@@ -148,11 +180,11 @@ module.exports = {
     wp: {
       src: {
         assets: [
-          productionAssets + '/css/*.css',
-          productionAssets + '/js/*.js'
+          wpAssets + '/css/*.css',
+          wpAssets + '/js/*.js'
           // productionAssets + '/images/**/*'
         ],
-        base: productionAssets
+        base: wpAssets
       },
       dest: {
         assets: wpAssets + '/',
@@ -171,9 +203,9 @@ module.exports = {
     wp: {
       src: [
         wpAssets + '/rev-manifest.json',
-        wp + '/functions.php'
+        src + '/inc/enqueue.php'
       ],
-      dest: wp + '/'
+      dest: wp + '/inc'
     }
   },
   rsync: {

@@ -7,6 +7,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 // to-do
 const isProduction = (process.env.NODE_ENV === 'production')
+const isWp = (process.env.WP === 'true')
+
+let outputPath = isWp ? '../' : '../public_html/'
 
 console.log(
   `Running webpack in the ${isProduction ? 'production' : 'development'} mode`
@@ -21,8 +24,8 @@ module.exports = {
     ]
   },
   output: {
-    filename: isProduction ? 'static/js/[name]-[chunkhash:5].min.js' : 'static/js/[name].js',
-    path: path.resolve(__dirname, '../public_html/'),
+    filename: isProduction ? 'static/js/[name].min.js' : 'static/js/[name].js',
+    path: path.resolve(__dirname, outputPath),
     publicPath: '/'
   },
   module: {
@@ -144,8 +147,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: isProduction ? 'static/css/[name]-[contenthash:5].min.css' : 'static/css/[name].css',
-      chunkFilename: isProduction ? 'static/css/[id]-[contenthash:5].min.css' : 'static/css/[id].css'
+      filename: isProduction ? 'static/css/[name].min.css' : 'static/css/[name].css',
+      chunkFilename: isProduction ? 'static/css/[id].min.css' : 'static/css/[id].css'
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
