@@ -1,10 +1,9 @@
 # Project: "E-Starter kit"
-### Webpack 3 + Bootstrap 4 example
-This is the repo to start web projects in ECreativo
+### Webpack 4 + Bootstrap 4 example
 
 Creation date: 24 Nov 2016  
 Autor: Camilo Ruiz  
-Last Update: 28 April 2018
+Last Update: 9 NOV 2018
 
 #### Targets
 1.	Speed up the process of making websites.
@@ -21,7 +20,8 @@ Last Update: 28 April 2018
 
 #### Golden Rules:
 
-- Keep simple, do not use more than you need.
+- The [KISS](https://en.wikipedia.org/wiki/KISS_principle) principle(Keep It Simple Stupid)
+- [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 
 ### Try out
 
@@ -96,7 +96,7 @@ ___
 This repo includes some references of differents demos:
 
 - Gulp.js tutorial series by [Stefan Imhoff](https://github.com/kogakure) in [stefanimhoff.de](https://stefanimhoff.de/series/gulp/) here the [Github Repo](https://github.com/kogakure/gulp-tutorial) and [here my fork](https://github.com/Camiloruiiz/gulp-tutorial).
-- Gulp 4 with Webpack by [Pascal Klau](http://www.artofmyself.com) in [CSS Tricks article](https://css-tricks.com/combine-webpack-gulp-4) here the [Github Repo](https://github.com/PascalAOMS/gulp4-webpack) and [here my fork](https://github.com/Camiloruiiz/gulp4-webpack).
+- Gulp 4 with Webpack by [Pascal Klau](http://www.artofmyself.com) in [CSS Tricks article](https://css-tricks.com/combine-webpack-gulp-4) here the [Github Repo](https://github.com/PascalAOMS/gulp4-webpack).
 - Use ES6 in webpack config [stackoverflow](https://stackoverflow.com/questions/31903692/how-can-i-use-es6-in-webpack-config-js).
-- Webpack 3 + Bootstrap 4 beta example by [xdvarpunen](https://github.com/xdvarpunen) here the [Github Repo](https://github.com/xdvarpunen/webpackboot) and [here my fork](https://github.com/Camiloruiiz/webpackboot).
+- Webpack 3 + Bootstrap 4 beta example by [xdvarpunen](https://github.com/xdvarpunen) here the [Github Repo](https://github.com/xdvarpunen/webpackboot).
 - Reload Browser when webpack bundle is complete [BrowserSync/recipes](https://github.com/Browsersync/recipes/tree/master/recipes/webpack.babel)
