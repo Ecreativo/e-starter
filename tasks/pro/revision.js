@@ -11,9 +11,9 @@ export function revisionPro() {
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev())
     .pipe(gulp.dest(config.dest.assets))
-    .pipe(rev.manifest({
-      base: './'
-      // ,merge: true
+    .pipe(rev.manifest(config.dest.manifest.name, {
+      base: './',
+      merge: true
     }))
     .pipe(gulp.dest(config.dest.manifest.path))
 }

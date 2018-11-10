@@ -32,8 +32,8 @@ function copyFilesPro(done) {
 }
 
 const watch = (done) => {
-  gulp.watch(config.watch.production.css, gulp.series(scripts, 'rev:pro'))
-  gulp.watch(config.watch.production.js, gulp.series(scripts, 'rev:pro'))
+  gulp.watch(config.watch.production.css, gulp.series(clearPro, scripts, 'rev:pro'))
+  gulp.watch(config.watch.production.js, gulp.series(clearPro, scripts, 'rev:pro'))
   gulp.watch(config.watch.production.images, gulp.series(images))
   gulp.watch(config.watch.production.fonts, gulp.series(copyFontsPro))
   done()

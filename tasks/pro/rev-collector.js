@@ -8,6 +8,12 @@ const config = require('../config').collect
  */
 export function revcollectPro() {
   return gulp.src(config.src)
-    .pipe(collect())
+    .pipe(collect({
+      replaceReved: true
+      /* dirReplacements: {
+      'static/css/': 'static/css/',
+      'static/js/': 'static/js/'
+      } */
+    }))
     .pipe(gulp.dest(config.dest))
 }

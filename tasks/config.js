@@ -61,8 +61,15 @@ module.exports = {
     production: {
       src: [
         productionAssets + '/css/**',
-        productionAssets + '/js/**',
-        build + '/**/*.{php,html}'
+        productionAssets + '/js/**'
+        // build + '/**/*.{php,html}'
+      ]
+    },
+    wp: {
+      src: [
+        wpAssets + '/css/**',
+        wpAssets + '/js/**'
+        // build + '/**/*.{php,html}'
       ]
     },
     clear: {
@@ -86,8 +93,8 @@ module.exports = {
       fonts: srcAssets + '/fonts{,/**}'
     },
     wp: {
-      css: productionAssets + '/css/*.css',
-      js: productionAssets + '/js/*.js'
+      css: srcAssets + '/scss/**/*.scss',
+      js: srcAssets + '/javascripts/**/*'
     }
   },
   copy: {
@@ -171,10 +178,10 @@ module.exports = {
       base: productionAssets
     },
     dest: {
-      assets: productionAssets,
+      assets: productionAssets + '/',
       manifest: {
         name: 'manifest.json',
-        path: productionAssets
+        path: productionAssets + '/'
       }
     },
     wp: {
@@ -189,6 +196,7 @@ module.exports = {
       dest: {
         assets: wpAssets + '/',
         manifest: {
+          name: 'manifest.json',
           path: wpAssets + '/'
         }
       }
@@ -196,13 +204,13 @@ module.exports = {
   },
   collect: {
     src: [
-      productionAssets + '/rev-manifest.json',
+      productionAssets + '/manifest.json',
       build + '/**/*.{html,php}'
     ],
     dest: build,
     wp: {
       src: [
-        wpAssets + '/rev-manifest.json',
+        wpAssets + '/manifest.json',
         src + '/inc/enqueue.php'
       ],
       dest: wp + '/inc'
