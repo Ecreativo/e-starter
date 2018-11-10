@@ -9,11 +9,11 @@ const config = require('../config').revision.wp
 export function revisionWp() {
   return gulp.src(config.src.assets, { base: config.src.base })
     .pipe(gulp.dest(config.dest.assets))
-    .pipe(rev({
-      base: './'
-      //, merge: true
-    }))
+    .pipe(rev())
     .pipe(gulp.dest(config.dest.assets))
-    .pipe(rev.manifest())
+    .pipe(rev.manifest(config.dest.manifest.name, {
+      base: './',
+      merge: true
+    }))
     .pipe(gulp.dest(config.dest.manifest.path))
 };

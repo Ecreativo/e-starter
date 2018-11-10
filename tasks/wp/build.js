@@ -19,11 +19,7 @@ const copyFontsWp = (done) => {
   done()
 }
 
-const watch = (done) => {
-  gulp.watch(config.watch.wp.css, gulp.series('rev:wp'))
-  gulp.watch(config.watch.wp.js, gulp.series('rev:wp'))
-  done()
-}
+export const clearWp = () => del(config.delete.wp.src, { force: true })
 
 gulp.task(
   'rev:wp',
@@ -45,7 +41,6 @@ gulp.task(
   gulp.series(
     'copy:wp',
     'rev:wp',
-    serve,
-    watch
+    serve
   )
 )
