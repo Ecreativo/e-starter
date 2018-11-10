@@ -1,5 +1,5 @@
 import merge from 'webpack-merge'
-import common from '../webpack.js'
+import { webpackConfig as common } from '../webpack.js'
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 

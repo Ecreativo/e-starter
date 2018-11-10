@@ -1,6 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 import process from 'process'
+import merge from 'webpack-merge'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
@@ -15,7 +16,7 @@ console.log(
   `Running webpack in the ${isProduction ? 'production' : 'development'} mode`
 )
 
-module.exports = {
+let webpackConfig = {
   context: path.resolve(__dirname, '../src/'),
   entry: {
     main: [
@@ -159,14 +160,23 @@ module.exports = {
       Util: 'exports-loader?Util!bootstrap/js/dist/util',
       Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
       Popover: 'exports-loader?Popover!bootstrap/js/dist/popover'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Home',
-      inject: true,
-      template: './views/pages/index.pug',
-      filename: '../public_html/index.html',
-      chunks: ['main', 'vendor'],
-      alwaysWriteToDisk: true
     })
   ]
 }
+
+if (!isWp) {
+  webpackConfig = merge.smart(webpackConfig, {
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: 'Home',
+        inject: true,
+        template: './views/pages/index.pug',
+        filename: '../public_html/index.html',
+        chunks: ['main', 'vendor'],
+        alwaysWriteToDisk: true
+      })
+    ]
+  })
+}
+
+module.exports = { webpackConfig }
