@@ -4,14 +4,15 @@ import webpack from 'webpack'
 import merge from 'webpack-merge'
 import { webpackConfig as common } from '../webpack.js'
 
-import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
+// import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
 const isWp = (process.env.WP === 'true')
 
 let config = merge(common, {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'none',
+  // devtool: 'source-map',
   optimization: {
     nodeEnv: 'production',
     minimize: true,

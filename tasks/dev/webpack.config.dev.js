@@ -5,8 +5,9 @@ import DashboardPlugin from 'webpack-dashboard/plugin'
 
 export let config = merge(common, {
   mode: 'development',
-  devtool: 'inline-source-map',
-  // devtool: 'eval',
+  // devtool: 'none',
+  // devtool: 'inline-source-map',
+  devtool: 'eval',
   plugins: [
     // Show Dashboard
     new DashboardPlugin(),

@@ -8,7 +8,6 @@ const developmentAssets = src + '/static'
 const build = './public_html'
 const productionAssets = build + '/static'
 const wp = path.resolve(__dirname, '../')
-// const wp = 'app/public/wp-content/themes/e-child-theme'
 const wpInc = wp + '/inc'
 const wpAssets = wp + '/static'
 
@@ -50,8 +49,7 @@ module.exports = {
       open: false,
       // tunnel: true,
       // tunnel: "ppress",
-      port: 8082,
-      files: wpAssets + '/css/main.min.css'
+      port: 8082
     }
   },
   delete: {
@@ -69,7 +67,6 @@ module.exports = {
       src: [
         wpAssets + '/css/**',
         wpAssets + '/js/**'
-        // build + '/**/*.{php,html}'
       ]
     },
     clear: {
@@ -123,8 +120,6 @@ module.exports = {
       src + '/inc/**/*.txt'
       // src + '/**/*',
       // '!' + src + '/views',
-      // '!' + src + '/static{,/**}',
-      // '!' + src + '/assets{,/**}'
     ],
     dest: build,
     production: {
