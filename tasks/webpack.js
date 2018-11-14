@@ -80,6 +80,7 @@ let webpackConfig = {
         loader: 'url-loader',
         options: {
           limit: 10 * 1024,
+          // limit: 50000,
           // Todo separate by differents mimetype
           // mimetype: 'application/font-woff',
           // Todo try to change the context to make the url like ../fonts instead of ../../static/fonts/

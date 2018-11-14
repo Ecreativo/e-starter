@@ -25,17 +25,6 @@ let imagesOutputPath = isWp ? wpAssets + '/images/' : productionAssets + '/image
 
 module.exports = {
   browsersync: {
-    development: {
-      // server: {
-      //   baseDir: build + '/'
-      // },
-      server: [build + '/', src + '/'],
-      middleware: [],
-      open: false,
-      port: 8080
-      // reload when files are changing without fire any other task
-      // files: [src + '/**']
-    },
     production: {
       server: {
         baseDir: build + '/'

@@ -1,18 +1,54 @@
+import path from 'path'
 import merge from 'webpack-merge'
 import { webpackConfig as common } from '../webpack.js'
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import DashboardPlugin from 'webpack-dashboard/plugin'
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 
-export let config = merge(common, {
+module.exports = merge(common, {
   mode: 'development',
   // devtool: 'none',
   // devtool: 'inline-source-map',
   devtool: 'eval',
+  devServer: {
+    // publicPath:
+    contentBase: path.join(__dirname, '../../public_html'),
+    overlay: true,
+    port: 8079
+  },
   plugins: [
     // Show Dashboard
     new DashboardPlugin(),
-    new HtmlWebpackHarddiskPlugin()
+    new HtmlWebpackHarddiskPlugin(),
+    new BrowserSyncPlugin(
+      // BrowserSync options
+      {
+        host: 'localhost',
+        port: 8080,
+        // proxy the Webpack Dev Server endpoint
+        // through BrowserSync
+        proxy: 'http://localhost:8079/'
+        // injectChanges: true
+        // files: path.join(__dirname, '../../src/**/*'),
+        // files: [{
+        //     match: [
+        //         '**/*.hbs'
+        //     ],
+        //     fn: function(event, file) {
+        //         if (event === "change") {
+        //             const bs = require('browser-sync').get('bs-webpack-plugin');
+        //             bs.reload();
+        //         }
+        //     }
+        // }]
+      },
+      // plugin options
+      {
+        // prevent BrowserSync from reloading the page
+        // and let Webpack Dev Server take care of this
+        reload: false
+        // injectCss: true
+      }
+    )
   ]
 })
-
-module.exports = { config }

@@ -51,30 +51,14 @@ ___
 
 #### To-do's
 1. Things to add:
-	- [Use .env](https://github.com/mrsteele/dotenv-webpack)
-	- [Fixing our local environment with Browsersync](https://gist.github.com/robinrendle/0bb0b9e55fafa1cc0c64ff4b5776df05)
-	- webpack-dev-server & browser-sync-webpack-plugin
+	- Use [.env](https://github.com/mrsteele/dotenv-webpack)
+	- [hot reload to use whit vue.js](https://stackoverflow.com/questions/24581873/what-exactly-is-hot-module-replacement-in-webpack)
 		- [webpack-starter-kit](https://github.com/ADCI/webpack-starter-kit)
-		- [webpack-for-testing-web] (https://manavsehgal.com/browsersync-and-webpack-for-testing-web-apps-across-multiple-devices-64e7f7fa62f2)
+		- [webpack-for-testing-web](https://manavsehgal.com/browsersync-and-webpack-for-testing-web-apps-across-multiple-devices-64e7f7fa62f2)
+		- [Making React, Webpack, BrowserSync & Gulp play nice and hot reload](https://words.mxbry.com/making-react-webpack-browsersync-gulp-play-nice-and-hot-reload-b2c1e01522e3)
 		- [webpack-css](https://github.com/MattHsiung/webpack-css)
 		- https://gist.github.com/martinherweg/64ac8f3123044cb2777d6a9fcd9f6fdf
-		- [browser-sync-config.js](https://gist.github.com/christopher4lis/3358d92395d686375c50f7ebb218f1dc)
-		- [browser-sync-webpack-plugin](https://www.npmjs.com/package/browser-sync-webpack-plugin)
-		- [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-		- [Making React, Webpack, BrowserSync & Gulp play nice and hot reload](https://words.mxbry.com/making-react-webpack-browsersync-gulp-play-nice-and-hot-reload-b2c1e01522e3)
-	- [hot reload to use whit vue.js](https://stackoverflow.com/questions/24581873/what-exactly-is-hot-module-replacement-in-webpack)
-		- [Making React, Webpack, BrowserSync & Gulp play nice and hot reload](https://words.mxbry.com/making-react-webpack-browsersync-gulp-play-nice-and-hot-reload-b2c1e01522e3)
-	- 'async', 'preload', 'prefetch', 'defer', 'module'
-		- [script-ext-html-webpack-plugin](https://github.com/numical/script-ext-html-webpack-plugin)
-		- [https://github.com/numical/style-ext-html-webpack-plugin](https://github.com/numical/style-ext-html-webpack-plugin)
-		- [Async CSS ans JS with pug.](https://extri.co/2017/05/23/using-htmlwebpackplugin-and-pug/)
-		- [preload-webpack-plugin](https://github.com/GoogleChromeLabs/preload-webpack-plugin)
-	- [Resource Hints](https://www.w3.org/TR/resource-hints/)
-		- https://github.com/jantimon/resource-hints-webpack-plugin
-	- Cache Busting
-		- [PHP backend code](https://www.alainschlesser.com/bust-cache-content-hash/)
-		- [Make use of long-term caching](https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching)
-		- [Caching best practices & max-age gotchas](https://jakearchibald.com/2016/caching-best-practices/)
+		- Implement HMR [https://github.com/PascalAOMS/gulp4-webpack/tree/hmr](https://github.com/PascalAOMS/gulp4-webpack/tree/hmr)
 	- Webpack Manifest
 		- [webpack-manifest-plugin](https://www.npmjs.com/package/webpack-manifest-plugin)
 		- https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching
@@ -84,13 +68,24 @@ ___
 		- [https://survivejs.com](https://survivejs.com/webpack/loading/images/)
 		- srcset [resize-image-loader](https://www.npmjs.com/package/resize-image-loader)
 		- [gomakethings.com](https://gomakethings.com/automating-css-and-js-cache-busting-with-gulp-and-wordpress/)
+	- Cache Busting
+		- [PHP backend code](https://www.alainschlesser.com/bust-cache-content-hash/)
+		- [Make use of long-term caching](https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching)
+		- [Caching best practices & max-age gotchas](https://jakearchibald.com/2016/caching-best-practices/)
+	- [Resource Hints](https://www.w3.org/TR/resource-hints/)
+		- https://github.com/jantimon/resource-hints-webpack-plugin
+	- 'async', 'preload', 'prefetch', 'defer', 'module'
+		- [script-ext-html-webpack-plugin](https://github.com/numical/script-ext-html-webpack-plugin)
+		- [https://github.com/numical/style-ext-html-webpack-plugin](https://github.com/numical/style-ext-html-webpack-plugin)
+		- [Async CSS ans JS with pug.](https://extri.co/2017/05/23/using-htmlwebpackplugin-and-pug/)
+		- [preload-webpack-plugin](https://github.com/GoogleChromeLabs/preload-webpack-plugin)
 
 2. look into
 	- [Important](https://survivejs.com/webpack/foreword/)
 	- [Put Your Webpack Bundle On A Diet](https://www.contentful.com/blog/2017/10/10/put-your-webpack-on-a-diet-part-1/)
 	- If it's necessary a complex pipe with gulp [webpack-stream](https://github.com/shama/webpack-stream)
-	- [Tree Shaking Webpack](https://github.com/understrap/understrap/tree/master/inc)
-	- [Understrap](https://webpack.js.org/guides/tree-shaking/)
+	- [Tree Shaking Webpack](https://webpack.js.org/guides/tree-shaking/)
+	- Framework using bootsteap 4 and Wordpress [Understrap](https://github.com/understrap/understrap)
 	
 
 3. Implement [stylelint](http://www.creativenightly.com/2016/02/How-to-lint-your-css-with-stylelint) in postcss.
@@ -104,8 +99,6 @@ ___
 7. Implement webfotn from svg files [https://github.com/jeerbl/webfonts-loader](https://github.com/jeerbl/webfonts-loader)
 
 8. Implement sprites [https://www.npmjs.com/package/webpack-spritesmith](https://www.npmjs.com/package/webpack-spritesmith)
-
-9. Implement HMR [https://github.com/PascalAOMS/gulp4-webpack/tree/hmr](https://github.com/PascalAOMS/gulp4-webpack/tree/hmr)
 
 
 ####  Notes

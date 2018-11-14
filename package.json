@@ -4,14 +4,14 @@
   "description": "Be a modern web developer with this ES6 Gulp workflow combined with Webpack",
   "main": "/tasks/index.js",
   "scripts": {
-    "dev": "gulp --require babel-register --gulpfile tasks",
-    "build": "NODE_ENV=production gulp build --require babel-register --gulpfile tasks",
+    "webpack": "node -r babel-register node_modules/.bin/webpack --config tasks/dev/webpack.config.dev.js",
+    "watch": "node -r babel-register node_modules/.bin/webpack --config tasks/dev/webpack.config.dev.js && --watch",
+    "dev": "node -r babel-register node_modules/.bin/webpack-dev-server --config tasks/dev/webpack.config.dev.js",
+    "build": "NODE_ENV=production gulp  --require babel-register --gulpfile tasks",
     "push-s": "HOST=sitehost URL=site.com USER=site.user NODE_ENV=staging gulp deploy --require babel-register --gulpfile tasks",
     "push-p": "HOST=sitehost URL=staging.site.com USER=site.user NODE_ENV=production gulp deploy --require babel-register --gulpfile tasks",
     "wp": "NODE_ENV=production WP=true gulp wp --require babel-register --gulpfile tasks",
     "seo": "URL=esquemacreativo.com gulp seo --require babel-register --gulpfile tasks",
-    "webpack": "node -r babel-register ./node_modules/webpack/bin/webpack --config tasks/dev/webpack.js",
-    "watch": "webpack && --watch",
     "clear:cache": "gulp clearcache --require babel-register --gulpfile tasks",
     "clear": "gulp clear --require babel-register --gulpfile tasks"
   },
@@ -58,6 +58,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^1.0.1",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.7",
@@ -104,7 +105,7 @@
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
     "webpack-dashboard": "^2.0.0",
-    "webpack-dev-middleware": "^3.4.0",
+    "webpack-dev-server": "^3.1.10",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.1.4"
   }
