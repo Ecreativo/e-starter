@@ -63,19 +63,6 @@ let webpackConfig = {
           }]
       },
       {
-        test: /\.svg$/,
-        loader: 'svg-url-loader',
-        options: {
-          // Inline files smaller than 10 kB (10240 bytes)
-          limit: 10 * 1024,
-          // Remove the quotes from the url
-          // (they’re unnecessary in most cases)
-          // noquotes: true
-          name: 'static/images/[name].[ext]', // Output below ./fonts
-          publicPath: '../../' // Take the directory into account
-        }
-      },
-      {
         test: /\.(ttf|eot|woff|woff2)$/,
         loader: 'url-loader',
         options: {
@@ -87,23 +74,6 @@ let webpackConfig = {
           name: './static/fonts/[name].[ext]', // Output below ./fonts
           publicPath: '../../' // Take the directory into account
         }
-      },
-      {
-        test: /\.(png|jpe?g|gif|ico|cur)$/,
-        loader: 'url-loader',
-        options: {
-          // Inline files smaller than 10 kB (10240 bytes)
-          limit: 10 * 1024,
-          name: 'static/images/[name].[ext]', // Output below ./fonts
-          publicPath: '../../' // Take the directory into account
-        }
-      },
-      // compresses images
-      {
-        test: /\.(jpe?g|png|gif|svg)$/,
-        loader: 'image-webpack-loader',
-        // This will apply the loader before the other ones
-        enforce: 'pre'
       },
       // include pug-loader to process the pug files
       {
@@ -142,6 +112,51 @@ let webpackConfig = {
           // eslint options (if necessary)
           fix: true
         }
+      },
+      // compresses images
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'static/images/[name].[ext]',
+              // publicPath: '../../' // Take the directory into account
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true, // webpack@2.x and newer
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                optimizationLevel: 5
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: true
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
+              },
+              svgo: {
+                plugins: [
+                  { removeViewBox: true },
+                  { cleanupIDs: false }
+                ]
+              }
+            }
+          }
+        ],
+        // This will apply the loader before the other ones
+        enforce: 'pre'
       }
     ]
   },

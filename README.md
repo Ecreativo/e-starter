@@ -63,15 +63,13 @@ ___
 		- [webpack-manifest-plugin](https://www.npmjs.com/package/webpack-manifest-plugin)
 		- https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching
 	- Optimize images in webpack
-		- [Optimize images](https://iamakulov.com/notes/optimize-images-webpack/)
-		- [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader)
 		- [https://survivejs.com](https://survivejs.com/webpack/loading/images/)
 		- srcset [resize-image-loader](https://www.npmjs.com/package/resize-image-loader)
-		- [gomakethings.com](https://gomakethings.com/automating-css-and-js-cache-busting-with-gulp-and-wordpress/)
 	- Cache Busting
 		- [PHP backend code](https://www.alainschlesser.com/bust-cache-content-hash/)
 		- [Make use of long-term caching](https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching)
 		- [Caching best practices & max-age gotchas](https://jakearchibald.com/2016/caching-best-practices/)
+		- [gomakethings.com](https://gomakethings.com/automating-css-and-js-cache-busting-with-gulp-and-wordpress/)
 	- [Resource Hints](https://www.w3.org/TR/resource-hints/)
 		- https://github.com/jantimon/resource-hints-webpack-plugin
 	- 'async', 'preload', 'prefetch', 'defer', 'module'

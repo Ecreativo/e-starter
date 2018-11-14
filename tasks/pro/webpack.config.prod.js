@@ -13,6 +13,33 @@ let config = merge(common, {
   mode: 'production',
   devtool: 'none',
   // devtool: 'source-map',
+  module: {
+    rules: [
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'svg-url-loader',
+      //   options: {
+      //     // Inline files smaller than 10 kB (10240 bytes)
+      //     limit: 10 * 1024,
+      //     // Remove the quotes from the url
+      //     // (they’re unnecessary in most cases)
+      //     // noquotes: true
+      //     name: 'static/images/[name].[ext]', // Output below ./fonts
+      //     publicPath: '../../' // Take the directory into account
+      //   }
+      // },
+      // {
+      //   test: /\.(png|jpe?g|gif|ico|cur)$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     // Inline files smaller than 10 kB (10240 bytes)
+      //     limit: 10 * 1024,
+      //     name: 'static/images/[name].[ext]', // Output below ./fonts
+      //     publicPath: '../../' // Take the directory into account
+      //   }
+      // }
+    ]
+  },
   optimization: {
     nodeEnv: 'production',
     minimize: true,
@@ -38,6 +65,7 @@ let config = merge(common, {
     // Make module IDs more stable
     new webpack.HashedModuleIdsPlugin(),
     // Concatenate modules where possible
+    // https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#enable_module_concatenation_for_es_modules_aka_scope_hoisting
     new webpack.optimize.ModuleConcatenationPlugin()
   ]
 })
