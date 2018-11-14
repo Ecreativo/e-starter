@@ -73,7 +73,6 @@ gulp.task(
 gulp.task(
   'server:pro',
   gulp.series(
-    'rev:pro',
     server,
     watch
   )
