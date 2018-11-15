@@ -16,6 +16,32 @@ module.exports = merge(common, {
     overlay: true,
     port: 8079
   },
+  module: {
+    rules: [
+      {
+        test: /\.(ttf|eot|woff|woff2)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'static/fonts/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico|cur|svg|)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'static/images/[name].[ext]'
+            }
+          }
+        ]
+      }
+    ]
+  },
   plugins: [
     // Show Dashboard
     new DashboardPlugin(),
