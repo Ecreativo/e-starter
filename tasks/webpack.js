@@ -10,23 +10,23 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 const isEnv = process.env.NODE_ENV
 const isWp = (process.env.NODE_ENV === 'wp')
 const isProduction = (process.env.NODE_ENV === 'production' || isWp)
-let outputPath = isWp ? '../' : '../public_html/'
+let outputPath = isWp ? '/' : '/public_html/'
 
 console.log(
   `Running webpack in the ${isEnv} mode`
 )
 
 let webpackConfig = {
-  context: path.resolve(__dirname, '../src/'),
+  context: path.resolve(__dirname, '../'),
   entry: {
     main: [
-      './assets/javascripts/application.js',
-      './assets/javascripts/bootstrap.js'
+      './src/assets/javascripts/application.js',
+      './src/assets/javascripts/bootstrap.js'
     ]
   },
   output: {
     filename: isProduction ? 'static/js/[name].min.js' : 'static/js/[name].js',
-    path: path.resolve(__dirname, outputPath),
+    path: path.resolve(__dirname, '../' + outputPath),
     publicPath: '/'
   },
   module: {
@@ -128,8 +128,8 @@ if (!isWp) {
       new HtmlWebpackPlugin({
         title: 'Home',
         inject: true,
-        template: './views/pages/index.pug',
-        filename: '../public_html/index.html',
+        template: 'src/views/pages/index.pug',
+        filename: 'index.html',
         chunks: ['main', 'vendor'],
         alwaysWriteToDisk: true
       })

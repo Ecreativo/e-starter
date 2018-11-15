@@ -12,7 +12,7 @@ module.exports = merge(common, {
   devtool: 'eval',
   devServer: {
     // publicPath:
-    contentBase: path.join(__dirname, '../../public_html'),
+    contentBase: path.join(__dirname, '../public_html'),
     overlay: true,
     port: 8079
   },
