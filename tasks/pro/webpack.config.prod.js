@@ -3,6 +3,7 @@ import webpack from 'webpack'
 
 import merge from 'webpack-merge'
 import { webpackConfig as common } from '../webpack.js'
+import DashboardPlugin from 'webpack-dashboard/plugin'
 
 // import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
@@ -62,6 +63,7 @@ let config = merge(common, {
     }
   },
   plugins: [
+    new DashboardPlugin(),
     // Make module IDs more stable
     new webpack.HashedModuleIdsPlugin(),
     // Concatenate modules where possible

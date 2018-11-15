@@ -12,7 +12,7 @@
     "push-p": "HOST=sitehost URL=staging.site.com USER=site.user NODE_ENV=production gulp deploy --require babel-register --gulpfile tasks",
     "wp": "NODE_ENV=production WP=true gulp wp --require babel-register --gulpfile tasks",
     "seo": "URL=esquemacreativo.com gulp seo --require babel-register --gulpfile tasks",
-    "clear:cache": "gulp clearcache --require babel-register --gulpfile tasks",
+    "clear:cache": "gulp clearCache --require babel-register --gulpfile tasks",
     "clear": "gulp clear --require babel-register --gulpfile tasks"
   },
   "repository": {
