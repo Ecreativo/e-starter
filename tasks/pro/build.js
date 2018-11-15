@@ -1,7 +1,6 @@
 import gulp from 'gulp'
 import del from 'del'
 import { server } from './browser-sync'
-import { images } from './img'
 import { scripts } from './scripts'
 import { revisionPro } from './revision'
 import { revcollectPro } from './rev-collector'
@@ -9,17 +8,6 @@ import gulpLoadPlugins from 'gulp-load-plugins'
 
 const $ = gulpLoadPlugins()
 const config = require('../config')
-
-/**
- * Copy fonts to static folder
- * if not changed
- */
-const copyFontsPro = (done) => {
-  return gulp.src(config.copy.production.fonts.src, { force: true })
-    .pipe($.newer(config.copy.production.fonts.dest)) // Ignore unchanged files
-    .pipe(gulp.dest(config.copy.production.fonts.dest))
-  done()
-}
 
 /**
  * Copy main files
@@ -34,8 +22,6 @@ function copyFilesPro(done) {
 const watch = (done) => {
   gulp.watch(config.watch.production.css, gulp.series(clearPro, scripts, 'rev:pro'))
   gulp.watch(config.watch.production.js, gulp.series(clearPro, scripts, 'rev:pro'))
-  gulp.watch(config.watch.production.images, gulp.series(images))
-  gulp.watch(config.watch.production.fonts, gulp.series(copyFontsPro))
   done()
 }
 
@@ -55,17 +41,13 @@ gulp.task(
 gulp.task(
   'build:pro',
   gulp.series(
-    images,
-    gulp.parallel(
-      scripts
-    )
+    scripts
   )
 )
 
 gulp.task(
   'copy:pro',
   gulp.series(
-    copyFontsPro,
     copyFilesPro
   )
 )

@@ -62,19 +62,6 @@ let webpackConfig = {
             options: { sourceMap: true } // compiles Sass to CSS
           }]
       },
-      {
-        test: /\.(ttf|eot|woff|woff2)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10 * 1024,
-          // limit: 50000,
-          // Todo separate by differents mimetype
-          // mimetype: 'application/font-woff',
-          // Todo try to change the context to make the url like ../fonts instead of ../../static/fonts/
-          name: './static/fonts/[name].[ext]', // Output below ./fonts
-          publicPath: '../../' // Take the directory into account
-        }
-      },
       // include pug-loader to process the pug files
       {
         test: /\.pug$/,
@@ -112,51 +99,6 @@ let webpackConfig = {
           // eslint options (if necessary)
           fix: true
         }
-      },
-      // compresses images
-      {
-        test: /\.(jpe?g|png|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'static/images/[name].[ext]'
-              // publicPath: '../../' // Take the directory into account
-            }
-          },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              disable: true, // webpack@2.x and newer
-              mozjpeg: {
-                progressive: true,
-                quality: 65
-              },
-              optipng: {
-                optimizationLevel: 5
-              },
-              pngquant: {
-                quality: '65-90',
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: true
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75
-              },
-              svgo: {
-                plugins: [
-                  { removeViewBox: true },
-                  { cleanupIDs: false }
-                ]
-              }
-            }
-          }
-        ],
-        // This will apply the loader before the other ones
-        enforce: 'pre'
       }
     ]
   },

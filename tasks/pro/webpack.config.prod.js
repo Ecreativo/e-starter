@@ -17,29 +17,84 @@ let config = merge(common, {
   // devtool: 'source-map',
   module: {
     rules: [
-      // {
-      //   test: /\.svg$/,
-      //   loader: 'svg-url-loader',
-      //   options: {
-      //     // Inline files smaller than 10 kB (10240 bytes)
-      //     limit: 10 * 1024,
-      //     // Remove the quotes from the url
-      //     // (they’re unnecessary in most cases)
-      //     // noquotes: true
-      //     name: 'static/images/[name].[ext]', // Output below ./fonts
-      //     publicPath: '../../' // Take the directory into account
-      //   }
-      // },
-      // {
-      //   test: /\.(png|jpe?g|gif|ico|cur)$/,
-      //   loader: 'url-loader',
-      //   options: {
-      //     // Inline files smaller than 10 kB (10240 bytes)
-      //     limit: 10 * 1024,
-      //     name: 'static/images/[name].[ext]', // Output below ./fonts
-      //     publicPath: '../../' // Take the directory into account
-      //   }
-      // }
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10 * 1024,
+          // limit: 50000,
+          // Todo separate by differents mimetype
+          // mimetype: 'application/font-woff',
+          // Todo try to change the context to make the url like ../fonts instead of ../../static/fonts/
+          name: 'static/fonts/[name].[ext]', // Output below ./fonts
+          publicPath: '../../' // Take the directory into account
+        }
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico|cur)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              // Inline files smaller than 10 kB (10240 bytes)
+              limit: 10 * 1024,
+              name: 'static/images/[name].[ext]'
+            }
+          },
+          {
+            loader: 'img-loader',
+            options: {
+              plugins: [
+                require('imagemin-gifsicle')({
+                  interlaced: true
+                }),
+                require('imagemin-mozjpeg')({
+                  progressive: true,
+                  arithmetic: false,
+                  quality: 65
+                }),
+                require('imagemin-pngquant')({
+                  floyd: 0.5,
+                  speed: 4,
+                  quality: '65-90'
+                })
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              // Inline files smaller than 10 kB (10240 bytes)
+              limit: 10 * 1024,
+              // Remove the quotes from the url
+              // (they’re unnecessary in most cases)
+              // noquotes: true
+              name: 'static/images/[name].[ext]'
+            }
+          },
+          {
+            loader: 'img-loader',
+            options: {
+              plugins: [
+                require('imagemin-svgo')({
+                  plugins: [
+                    { removeTitle: true },
+                    { convertPathData: false },
+                    { removeViewBox: true },
+                    { cleanupIDs: false }
+                  ]
+                })
+              ]
+            }
+          }
+        ],
+        enforce: 'pre'
+      }
     ]
   },
   optimization: {
