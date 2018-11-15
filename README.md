@@ -51,7 +51,6 @@ ___
 
 #### To-do's
 1. Things to add:
-	- Use [.env](https://github.com/mrsteele/dotenv-webpack)
 	- [hot reload to use whit vue.js](https://stackoverflow.com/questions/24581873/what-exactly-is-hot-module-replacement-in-webpack)
 		- [webpack-starter-kit](https://github.com/ADCI/webpack-starter-kit)
 		- [webpack-for-testing-web](https://manavsehgal.com/browsersync-and-webpack-for-testing-web-apps-across-multiple-devices-64e7f7fa62f2)

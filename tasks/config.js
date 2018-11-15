@@ -1,5 +1,6 @@
 import process from 'process'
 import path from 'path'
+require('dotenv').config()
 
 // paths
 const src = 'src'
@@ -11,17 +12,31 @@ const wp = path.resolve(__dirname, '../')
 const wpInc = wp + '/inc'
 const wpAssets = wp + '/static'
 
+const isEnv = process.env.NODE_ENV
+const isWp = (isEnv === 'wp')
+const imagesOutputPath = isWp ? wpAssets + '/images/' : productionAssets + '/images/'
+const deployEnv = process.env.DEPLOY_ENV
+
 // user
-const USER = process.env.USER
-
+let USER
 // site url
-const URL = process.env.URL
-
+let URL
 // site host
-const HOST = process.env.HOST
+let HOST
 
-const isWp = (process.env.WP === 'true')
-let imagesOutputPath = isWp ? wpAssets + '/images/' : productionAssets + '/images/'
+if (deployEnv === 'staging') {
+  USER = process.env.STAGING_USER
+  URL = process.env.STAGING_URL
+  HOST = process.env.STAGING_HOST
+} else if (deployEnv === 'production') {
+  USER = process.env.PRODUCTION_USER
+  URL = process.env.PRODUCTION_URL
+  HOST = process.env.PRODUCTION_HOST
+} else {
+  USER = process.env.USER
+  URL = process.env.URL
+  HOST = process.env.HOST
+}
 
 module.exports = {
   browsersync: {

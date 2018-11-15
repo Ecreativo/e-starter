@@ -8,7 +8,8 @@ import DashboardPlugin from 'webpack-dashboard/plugin'
 // import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
-const isWp = (process.env.WP === 'true')
+const isEnv = process.env.NODE_ENV
+const isWp = (isEnv === 'wp')
 
 let config = merge(common, {
   mode: 'production',

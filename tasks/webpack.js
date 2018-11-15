@@ -7,13 +7,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 // to-do
-const isProduction = (process.env.NODE_ENV === 'production')
-const isWp = (process.env.WP === 'true')
-
+const isEnv = process.env.NODE_ENV
+const isWp = (process.env.NODE_ENV === 'wp')
+const isProduction = (process.env.NODE_ENV === 'production' || isWp)
 let outputPath = isWp ? '../' : '../public_html/'
 
 console.log(
-  `Running webpack in the ${isProduction ? 'production' : 'development'} mode`
+  `Running webpack in the ${isEnv} mode`
 )
 
 let webpackConfig = {
@@ -120,7 +120,7 @@ let webpackConfig = {
           {
             loader: 'file-loader',
             options: {
-              name: 'static/images/[name].[ext]',
+              name: 'static/images/[name].[ext]'
               // publicPath: '../../' // Take the directory into account
             }
           },
