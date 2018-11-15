@@ -32,10 +32,10 @@ if (deployEnv === 'staging') {
   USER = process.env.PRODUCTION_USER
   URL = process.env.PRODUCTION_URL
   HOST = process.env.PRODUCTION_HOST
-} else {
-  USER = process.env.USER
-  URL = process.env.URL
-  HOST = process.env.HOST
+} else if (deployEnv === 'live') {
+  USER = process.env.LIVE_USER
+  URL = process.env.LIVE_URL
+  HOST = process.env.LIVE_HOST
 }
 
 module.exports = {
