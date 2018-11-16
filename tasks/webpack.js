@@ -102,6 +102,11 @@ let webpackConfig = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src/')
+    }
+  },
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
