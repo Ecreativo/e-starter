@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import process from 'process'
 import merge from 'webpack-merge'
 
+// webpack plugins
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
@@ -77,11 +78,22 @@ let webpackConfig = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [['env', {
-              modules: false,
-              useBuiltIns: true
-            }]],
-            plugins: ['syntax-dynamic-import'],
+            presets: [
+              [
+                '@babel/preset-env', {
+                  modules: false,
+                  useBuiltIns: 'usage'
+                }
+              ]
+            ],
+            plugins: [
+              '@babel/plugin-syntax-dynamic-import',
+              [
+                '@babel/plugin-transform-runtime', {
+                  'regenerator': true
+                }
+              ]
+            ],
             cacheDirectory: true,
             babelrc: false
           }

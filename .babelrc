@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/env", {
       "targets": {
         "browsers": [
           "last 2 versions",
@@ -19,7 +19,7 @@
           "safari >= 5"
         ]
       },
-      "useBuiltIns": true
+      "useBuiltIns": "usage"
     }]
   ]
 }
