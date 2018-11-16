@@ -2,9 +2,10 @@ import process from 'process'
 import gulp from 'gulp'
 import psi, { output } from 'psi'
 import fs from 'fs'
+require('dotenv').config()
 
 // site url
-const URL = process.env.URL
+const URL = process.env.LIVE_HOST
 
 gulp.task('mobile', done =>
   output(URL, {
