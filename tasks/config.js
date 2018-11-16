@@ -121,7 +121,7 @@ module.exports = {
       // src + '/.htaccess',
       './node_modules/apache-server-configs/dist/.htaccess',
       // src + '/inc/**/*.{html,php}',
-      src + '/inc/**/*.txt'
+      src + '/inc/**/*'
       // src + '/**/*',
       // '!' + src + '/views',
     ],
@@ -210,7 +210,7 @@ module.exports = {
     wp: {
       src: [
         wpAssets + '/manifest.json',
-        src + '/inc/enqueue.php'
+        src + '/inc/inc/enqueue.php'
       ],
       dest: wp + '/inc'
     }
