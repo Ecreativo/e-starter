@@ -6,6 +6,8 @@ import merge from 'webpack-merge'
 // webpack plugins
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import WebpackNotifierPlugin from 'webpack-notifier'
+// const ManifestPlugin = require('webpack-manifest-plugin');
 
 // to-do
 const isEnv = process.env.NODE_ENV
@@ -120,6 +122,7 @@ let webpackConfig = {
     }
   },
   plugins: [
+    new WebpackNotifierPlugin({title: `Webpack ${isEnv}`, excludeWarnings: true, alwaysNotify: true}),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
