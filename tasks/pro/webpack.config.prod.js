@@ -1,12 +1,13 @@
 import path from 'path'
 import webpack from 'webpack'
-
 import merge from 'webpack-merge'
 import { webpackConfig as common } from '../webpack.js'
-import DashboardPlugin from 'webpack-dashboard/plugin'
 
-// import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
+// webpack plugins
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
+// import HtmlCriticalPlugin from 'html-critical-webpack-plugin'
+// import ImageminWebpWebpackPlugin from 'imagemin-webp-webpack-plugin'
 
 const isEnv = process.env.NODE_ENV
 const isWp = (isEnv === 'wp')
@@ -119,12 +120,14 @@ let config = merge(common, {
     }
   },
   plugins: [
-    new DashboardPlugin(),
     // Make module IDs more stable
     new webpack.HashedModuleIdsPlugin(),
     // Concatenate modules where possible
     // https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size#enable_module_concatenation_for_es_modules_aka_scope_hoisting
-    new webpack.optimize.ModuleConcatenationPlugin()
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    // make webp images
+    // new ImageminWebpWebpackPlugin(),
+    new BundleAnalyzerPlugin()
   ]
 })
 
