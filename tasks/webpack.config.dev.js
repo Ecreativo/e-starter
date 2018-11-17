@@ -1,6 +1,6 @@
 import path from 'path'
 import merge from 'webpack-merge'
-import { webpackConfig as common } from '../webpack.js'
+import { webpackConfig as common } from './webpack.js'
 import HtmlWebpackHarddiskPlugin from 'html-webpack-harddisk-plugin'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
