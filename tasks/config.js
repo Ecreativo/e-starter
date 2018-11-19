@@ -78,7 +78,7 @@ module.exports = {
         developmentAssets,
         build,
         wpAssets,
-        wpInc + '/enqueue.php'
+        wpInc + '/theme-functions/enqueue.php'
       ]
     }
   },
@@ -210,9 +210,9 @@ module.exports = {
     wp: {
       src: [
         wpAssets + '/manifest.json',
-        src + '/inc/inc/enqueue.php'
+        src + '/inc/inc/theme-functions/enqueue.php'
       ],
-      dest: wp + '/inc'
+      dest: wpInc
     }
   },
   rsync: {
