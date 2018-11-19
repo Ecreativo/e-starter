@@ -69,7 +69,8 @@ module.exports = {
     },
     wp: {
       src: [
-        wpAssets + '/css/**',
+        wpAssets + '/css/**/*',
+        '!' + wpAssets + '/css/editor-style.css',
         wpAssets + '/js/**'
       ]
     },
@@ -77,7 +78,8 @@ module.exports = {
       src: [
         developmentAssets,
         build,
-        wpAssets,
+        wpAssets + '/**/*',
+        '!' + wpAssets + '/css/editor-style.css',
         wpInc + '/theme-functions/enqueue.php'
       ]
     }

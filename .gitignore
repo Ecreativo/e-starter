@@ -10,6 +10,8 @@
 
 ## Main
 public_html/
+static/
+inc/theme-functions/enqueue.php
 
 ## Flywheel
 app/
