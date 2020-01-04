@@ -11,7 +11,22 @@
 ## Main
 public_html/
 static/
-inc/theme-functions/enqueue.php
+/inc/*
+/functions.php
+/index.php
+/screenshot.png
+/style.css
+src/static/
+
+## Project
+src/material-kit-pro/*
+src/material-kit-pro/*/*
+src/inc/docs/al-quran
+src/inc/docs/letters-of-the-prophet
+src/inc/docs/signs-of-the-hour
+!src/material-kit-pro/*/
+!src/material-kit-pro/assets/js
+!src/material-kit-pro/assets/scss
 
 ## Flywheel
 app/

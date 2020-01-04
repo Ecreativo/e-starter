@@ -1,4 +1,7 @@
 [submodule "src"]
 	path = src
-	url = https://github.com/Ecreativo/e-theme-pug
+	url = git@github.com:Ecreativo/e-theme-pug.git
 	branch = master
+[submodule "tasks"]
+	path = tasks
+	url = git@github.com:Camiloruiiz/e-tasks.git
