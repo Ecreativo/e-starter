@@ -1,16 +1,41 @@
 import gulp from 'gulp'
 import requireDir from 'require-dir'
 import { savePsiReport } from './util/pagespeed'
-import { clearPro } from './pro/build'
-import { clearWp } from './wp/build'
+import { clear } from './clear'
+import { clearCache } from './clear/clear-cache'
+import { server } from './server'
+import { revision } from './revision'
+import { revcollect } from './collector'
+import { copyFonts, copyFiles } from './copy'
+import { scripts } from './webpack/webpack.prod.js'
 
 requireDir('./', { recurse: true })
 
-export const build = gulp.series(clearPro, 'build:pro', 'copy:pro', 'rev:pro', 'server:pro')
-export const wp = gulp.series(clearWp, 'build:pro', 'server:wp')
-export const deploy = gulp.series('rsync', 'ping')
-export const seo = gulp.series('mobile', 'desktop', savePsiReport, 'ping')
-export {clear} from './util/clear'
-export {clearCache} from './util/clear-cache'
+gulp.task(
+  'server',
+  gulp.series(server)
+)
+
+gulp.task(
+  'rev',
+  gulp.series(
+    revision,
+    revcollect
+  )
+)
+
+gulp.task(
+  'build:pro',
+  gulp.series(
+    scripts
+  )
+)
+
+export const build = gulp.series(clear, 'build:pro', copyFiles, 'rev', 'server')
+export const wp = gulp.series(clear, 'build:pro', copyFonts, 'rev', 'server')
+export const deploy = gulp.series('rsync')
+export const seo = gulp.series('mobile', 'desktop', savePsiReport)
+export const clearGulp = gulp.series(clear, clearCache)
+export { rename } from './rename'
 
 export default build

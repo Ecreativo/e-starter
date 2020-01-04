@@ -1,14 +1,11 @@
-import process from 'process'
+import { paths } from '../paths.js'
 import gulp from 'gulp'
 import psi, { output } from 'psi'
 import fs from 'fs'
-require('dotenv').config()
-
-// site url
-const URL = process.env.LIVE_HOST
+import {} from 'dotenv/config'
 
 gulp.task('mobile', done =>
-  output(URL, {
+  output(paths.URL, {
     // key: key
     nokey: 'true',
     threshold: 20,
@@ -21,7 +18,7 @@ gulp.task('mobile', done =>
 )
 
 gulp.task('desktop', done =>
-  output(URL, {
+  output(paths.URL, {
     // key: key
     nokey: 'true',
     threshold: 20,
@@ -34,26 +31,26 @@ gulp.task('desktop', done =>
 )
 
 export function savePsiReport(done) {
-  psi(URL, {
+  psi(paths.URL, {
     nokey: 'true',
     threshold: 20,
     strategy: 'mobile'
   }).then(data => {
     var time = Date.now()
-    fs.writeFile(`./${time}mobile.json`, JSON.stringify([data.ruleGroups, data.pageStats]), function(err) {
+    fs.writeFile(`./${time}mobile.json`, JSON.stringify([data.data.lighthouseResult.categories.performance.score]), function(err) {
       if (err) {
         return console.log(err)
       }
     })
   })
 
-  psi(URL, {
+  psi(paths.URL, {
     nokey: 'true',
     threshold: 20,
     strategy: 'desktop'
   }).then(data => {
     var time = Date.now()
-    fs.writeFile(`./${time}desktop.json`, JSON.stringify([data.ruleGroups, data.pageStats]), function(err) {
+    fs.writeFile(`./${time}desktop.json`, JSON.stringify([data.data.lighthouseResult.categories.performance.score]), function(err) {
       if (err) {
         return console.log(err)
       }

@@ -1,19 +1,19 @@
 import gulp from 'gulp'
 import collect from 'gulp-rev-collector'
-const config = require('../config').collect.wp
+import config from './config'
 
 /**
  * Replace all links to assets in files
  * from a manifest file
  */
-export function revcollectWp() {
+export function revcollect() {
   return gulp.src(config.src)
     .pipe(collect({
       replaceReved: true
       /* dirReplacements: {
-      'static/css/': 'static/css/',
-      'static/js/': 'static/js/'
+      `${paths.static}/css/`: `${paths.static}/css/`,
+      `${paths.static}/js/`: `${paths.static}/js/`
       } */
     }))
     .pipe(gulp.dest(config.dest))
-};
+}

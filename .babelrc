@@ -19,7 +19,8 @@
           "safari >= 5"
         ]
       },
-      "useBuiltIns": "usage"
+      "useBuiltIns": "entry",
+      "corejs": 3
     }]
   ]
 }
